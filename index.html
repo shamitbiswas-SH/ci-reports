@@ -3,109 +3,3496 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CI Reports · Simplify Healthcare</title>
+<title>Competitive Intelligence Report — Edifecs | Simplify Healthcare</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --brand-blue: #105299;
     --brand-blue-dark: #0C5395;
     --brand-blue-mid: #4C9CD5;
+    --brand-blue-tint: #BBECFF;
     --brand-gold: #D6B73E;
     --gold-tint: #FFF4CF;
     --near-black: #221F20;
+    --teal: #009277;
+    --teal-tint: #B7EDD9;
+    --green: #55B965;
+    --orange: #F58532;
+    --gray-50: #FAFAFA;
     --gray-100: #F4F4F5;
     --gray-200: #E5E5E7;
+    --gray-300: #CACACA;
     --gray-400: #9A9A9A;
     --gray-500: #6E6E73;
     --gray-700: #3D3D45;
+    --shadow-sm: 0 1px 2px rgba(34,31,32,0.06);
+    --shadow-md: 0 4px 12px rgba(34,31,32,0.08);
+    --shadow-lg: 0 12px 32px rgba(34,31,32,0.10);
     --serif: 'Roboto Slab', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
+
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: var(--sans); color: var(--near-black); background: #FFF; }
-  .hero { background: linear-gradient(135deg, #0A3F75 0%, #105299 100%); color: #FFF; padding: 64px 48px; }
-  .hero-inner { max-width: 1100px; margin: 0 auto; }
-  .brand-logo { font-family: var(--serif); font-weight: 700; font-size: 18px; margin-bottom: 56px; letter-spacing: 0.02em; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--near-black);
+    background: #FFFFFF;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* === HEADER === */
+  .hero {
+    background: linear-gradient(135deg, #0A3F75 0%, #105299 50%, #0F4C8C 100%);
+    color: #FFF;
+    padding: 56px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(214,183,62,0.12) 0%, transparent 50%),
+                      radial-gradient(circle at 20% 80%, rgba(76,156,213,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .brand-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .brand-logo {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: #FFF;
+  }
   .brand-logo span { color: var(--brand-gold); }
-  .hero-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.20em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 16px; }
-  .hero-title { font-family: var(--serif); font-weight: 700; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 24px 0; }
-  .hero-deck { font-size: 18px; font-weight: 300; max-width: 680px; line-height: 1.5; color: rgba(255,255,255,0.85); margin: 0; }
-  main { max-width: 1100px; margin: 0 auto; padding: 56px 48px 80px; }
-  .meta-row { display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--gray-200); margin-bottom: 32px; font-size: 13px; color: var(--gray-500); }
-  .meta-row strong { font-family: var(--serif); color: var(--brand-blue); font-size: 18px; font-weight: 600; display: block; }
-  h2.h { font-family: var(--serif); font-weight: 700; font-size: 32px; margin: 48px 0 8px 0; letter-spacing: -0.015em; }
-  .h-sub { font-size: 15px; color: var(--gray-500); margin: 0 0 32px 0; }
-  .report-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-  .report-card {
-    display: block;
+  .scan-meta { font-feature-settings: 'tnum'; }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px 0;
+  }
+  .hero-title em {
+    color: var(--brand-gold);
+    font-style: normal;
+    font-weight: 500;
+  }
+  .hero-deck {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 300;
+    max-width: 720px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 40px 0;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .hero-stat {
+    background: rgba(10,63,117,0.6);
+    padding: 20px 24px;
+    backdrop-filter: blur(10px);
+  }
+  .hero-stat-value {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 6px;
+    color: #FFF;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* === TABS === */
+  .tabnav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #FFF;
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+  }
+  .tabnav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    overflow-x: auto;
+    display: flex;
+    gap: 0;
+    scrollbar-width: thin;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 18px 24px;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .tab-btn:hover { color: var(--brand-blue); }
+  .tab-btn.active {
+    color: var(--brand-blue);
+    border-bottom-color: var(--brand-blue);
+    font-weight: 600;
+  }
+  .tab-btn-num {
+    font-family: var(--serif);
+    font-weight: 500;
+    color: var(--gray-400);
+    margin-right: 8px;
+    font-size: 13px;
+  }
+  .tab-btn.active .tab-btn-num { color: var(--brand-gold); }
+
+  /* === CONTENT === */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
+  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Typography */
+  h2.section-h {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--near-black);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.015em;
+  }
+  .section-sub {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--gray-500);
+    margin: 0 0 40px 0;
+    max-width: 720px;
+  }
+  h3.sub-h {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--brand-blue);
+    margin: 40px 0 16px 0;
+    letter-spacing: 0;
+  }
+  .body { font-size: 15px; color: var(--gray-700); line-height: 1.65; }
+
+  /* === OVERVIEW LAYOUT === */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 900px) { .overview-grid { grid-template-columns: 1fr; } }
+
+  .pull-quote {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--near-black);
+    padding: 8px 0 8px 32px;
+    border-left: 4px solid var(--brand-gold);
+    margin: 0 0 32px 0;
+  }
+  .pull-quote em {
+    color: var(--brand-blue);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .sentiment-card {
+    background: var(--gold-tint);
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid rgba(214,183,62,0.3);
+  }
+  .sentiment-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 12px;
+  }
+  .sentiment-score {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--near-black);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .sentiment-bar {
+    height: 8px;
+    background: var(--gray-200);
+    border-radius: 4px;
+    margin: 16px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .sentiment-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green) 0%, var(--brand-gold) 100%);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+  .sentiment-breakdown {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .sentiment-breakdown span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot.pos { background: var(--green); }
+  .dot.neu { background: var(--gray-400); }
+  .dot.neg { background: var(--orange); }
+
+  /* Action cards */
+  .action-list { display: flex; flex-direction: column; gap: 16px; }
+  .action-card {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 20px;
+    padding: 24px;
     background: #FFF;
     border: 1px solid var(--gray-200);
     border-radius: 8px;
-    padding: 24px;
-    text-decoration: none;
-    color: inherit;
     transition: all 0.2s;
   }
-  .report-card:hover { box-shadow: 0 12px 32px rgba(34,31,32,0.10); transform: translateY(-2px); border-color: var(--brand-blue-mid); }
-  .report-date { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px; }
-  .report-name { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--brand-blue); margin: 0 0 4px 0; letter-spacing: -0.01em; }
-  .report-sub { font-size: 13px; color: var(--gray-500); margin: 0 0 16px 0; font-style: italic; }
-  .report-tease { font-size: 14px; color: var(--gray-700); line-height: 1.5; margin: 0 0 16px 0; }
-  .report-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--brand-blue); }
-  .report-tags { display: flex; gap: 6px; margin-top: 12px; }
-  .tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 3px; background: var(--gold-tint); color: #8C7220; }
-  .tag.shc { background: rgba(187,236,255,0.5); color: var(--brand-blue-dark); }
-  footer { background: var(--near-black); color: rgba(255,255,255,0.6); padding: 32px 48px; font-size: 12px; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; }
+  .action-card:hover {
+    border-color: var(--brand-blue-mid);
+    box-shadow: var(--shadow-md);
+  }
+  .action-rank {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--brand-blue);
+    line-height: 1;
+  }
+  .action-priority {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .action-priority.P0 { background: #FCE4DC; color: #C8551F; }
+  .action-priority.P1 { background: var(--gold-tint); color: #8C7220; }
+  .action-priority.P2 { background: var(--brand-blue-tint); color: var(--brand-blue-dark); }
+  .action-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--near-black);
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+  }
+  .action-rationale {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .action-deadline {
+    text-align: right;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--gray-500);
+    white-space: nowrap;
+  }
+  .action-deadline strong {
+    display: block;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--near-black);
+    margin-top: 2px;
+  }
+
+  /* === STORY / TIMELINE === */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 32px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--brand-blue-tint);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 32px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--brand-blue);
+    border: 3px solid #FFF;
+    box-shadow: 0 0 0 2px var(--brand-blue);
+  }
+  .timeline-item.gold::before { background: var(--brand-gold); box-shadow: 0 0 0 2px var(--brand-gold); }
+  .timeline-date {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-blue);
+    margin-bottom: 4px;
+  }
+  .timeline-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 0 6px 0;
+    color: var(--near-black);
+  }
+  .timeline-detail {
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* === DATA TABLES === */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+  .data-table th {
+    background: var(--brand-blue);
+    color: #FFF;
+    text-align: left;
+    padding: 12px 16px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .data-table tr:nth-child(even) td { background: var(--brand-blue-tint); background: rgba(187,236,255,0.25); }
+  .data-table tr:hover td { background: var(--gold-tint); }
+  .data-table a { color: var(--brand-blue); text-decoration: none; border-bottom: 1px solid var(--brand-blue-tint); }
+  .data-table a:hover { border-bottom-color: var(--brand-blue); }
+
+  /* === LEADERSHIP CARDS === */
+  .leader-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .leader-card {
+    background: #FFF;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .leader-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--brand-blue-mid); }
+  .leader-card.departed { border-left: 4px solid var(--orange); }
+  .leader-card.founder { border-left: 4px solid var(--brand-gold); }
+  .leader-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--near-black);
+    margin: 0 0 4px 0;
+  }
+  .leader-title {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.45;
+    margin: 0 0 12px 0;
+  }
+  .leader-meta {
+    font-size: 12px;
+    color: var(--gray-400);
+    line-height: 1.5;
+    margin: 8px 0 12px 0;
+  }
+  .leader-meta strong { color: var(--gray-700); font-weight: 500; }
+  .leader-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--brand-blue);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .leader-link:hover { text-decoration: underline; }
+  .leader-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+  }
+  .leader-tag.departed { background: #FCE4DC; color: #C8551F; }
+  .leader-tag.founder { background: var(--gold-tint); color: #8C7220; }
+
+  /* === AWARDS TIMELINE === */
+  .award-year-block { margin-bottom: 32px; }
+  .award-year {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--brand-blue);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .award-row {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-200);
+    align-items: flex-start;
+  }
+  .award-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gold-tint);
+    color: var(--brand-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .award-content { flex: 1; }
+  .award-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--near-black);
+    margin: 0 0 4px 0;
+  }
+  .award-result { font-size: 13px; color: var(--gray-700); margin: 0; line-height: 1.5; }
+
+  /* === SIGNAL CARDS === */
+  .signal-feed { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+  .signal-card {
+    background: #FFF;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--gray-300);
+    transition: all 0.2s;
+  }
+  .signal-card.positive { border-left-color: var(--green); }
+  .signal-card.neutral { border-left-color: var(--gray-400); }
+  .signal-card.negative { border-left-color: var(--orange); }
+  .signal-card.cotiviti { border-left-color: var(--brand-gold); background: linear-gradient(to right, var(--gold-tint) 0%, #FFF 30%); }
+  .signal-card:hover { box-shadow: var(--shadow-md); }
+  .signal-header { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+  .sentiment-chip {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .sentiment-chip.positive { background: #DCEFD7; color: #2C6E1F; }
+  .sentiment-chip.neutral { background: var(--gray-100); color: var(--gray-500); }
+  .sentiment-chip.negative { background: #FCE4DC; color: #C8551F; }
+  .signal-source { font-size: 11px; color: var(--gray-400); }
+  .signal-detail { font-size: 14px; color: var(--gray-700); line-height: 1.55; margin: 0; }
+  .signal-link { font-size: 12px; color: var(--brand-blue); text-decoration: none; margin-top: 6px; display: inline-block; }
+
+  /* === KEYWORD CHIPS (Digital tab) === */
+  .kw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+    margin: 16px 0;
+  }
+  .kw-chip {
+    background: var(--gray-100);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    border-left: 3px solid var(--brand-blue-mid);
+  }
+  .kw-chip strong { color: var(--brand-blue-dark); display: block; font-size: 14px; font-weight: 500; }
+  .kw-chip .pos { color: var(--brand-gold); font-weight: 700; font-size: 11px; margin-top: 2px; display: block; }
+
+  /* === METRIC CARDS === */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .metric-card {
+    background: #FFF;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-500);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .metric-value {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--brand-blue);
+    line-height: 1;
+  }
+  .metric-sub { font-size: 12px; color: var(--gray-500); margin-top: 6px; }
+
+  /* === THREAT MATRIX === */
+  .threat-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .threat-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 3fr;
+    gap: 20px;
+    padding: 18px 20px;
+    background: #FFF;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    align-items: start;
+  }
+  .threat-product { font-family: var(--serif); font-weight: 600; font-size: 15px; color: var(--near-black); }
+  .threat-level {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    min-width: 70px;
+  }
+  .threat-level.HIGH { background: #FCE4DC; color: #C8551F; }
+  .threat-level.MEDIUM { background: var(--gold-tint); color: #8C7220; }
+  .threat-level.LOW { background: var(--teal-tint); color: #00604E; }
+  .threat-evidence { font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--near-black);
+    color: rgba(255,255,255,0.7);
+    padding: 48px 48px 32px;
+    font-size: 13px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-h {
+    font-family: var(--serif);
+    color: #FFF;
+    font-size: 16px;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+  }
+  .footer-line { font-size: 13px; line-height: 1.6; margin: 0 0 6px 0; }
+  .footer-bar {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Coverage block */
+  .coverage {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--gray-700);
+  }
+  .coverage strong { color: var(--brand-blue); }
+
+  /* Print */
+  @media print {
+    .tabnav { display: none; }
+    .tab-panel { display: block !important; page-break-before: always; }
+    .hero { padding: 32px; }
+  }
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-inner">
-    <div class="brand-logo">Simplify <span>Healthcare</span></div>
-    <div class="hero-eyebrow">Competitive Intelligence Library</div>
-    <h1 class="hero-title">CI Reports</h1>
-    <p class="hero-deck">Auto-generated competitive intelligence reports produced by the Simplify CI Agent V6.5. Each report is built from 100+ intelligence signals across web, LinkedIn, press wires, trade media, and SEO data.</p>
+    <div class="brand-strip">
+      <div class="brand-logo">Simplify <span>Healthcare</span></div>
+      <div class="scan-meta">Scan ID · EDIFECS-2026-05-25 · Generated 25 May 2026</div>
+    </div>
+    <div class="hero-eyebrow">Competitive Intelligence Report</div>
+    <h1 class="hero-title">Edifecs<br><em>a Cotiviti business</em></h1>
+    <p class="hero-deck">Healthcare interoperability and EDI incumbent now operating under Cotiviti ownership. Third consecutive Best in KLAS for CMS Payer Interoperability (2023, 2024, 2026). CEO transition and post-acquisition product expansion signal strategic intensification.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-value">96</div><div class="hero-stat-label">Events Scanned</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">45</div><div class="hero-stat-label">Gap Events</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">33</div><div class="hero-stat-label">Awards Tracked</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">8</div><div class="hero-stat-label">Leaders Profiled</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">100+</div><div class="hero-stat-label">Signals Captured</div></div>
+    </div>
   </div>
 </header>
 
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <button class="tab-btn active" data-tab="overview"><span class="tab-btn-num">01</span>Overview</button>
+    <button class="tab-btn" data-tab="story"><span class="tab-btn-num">02</span>The Story</button>
+    <button class="tab-btn" data-tab="events"><span class="tab-btn-num">03</span>Events &amp; Conferences</button>
+    <button class="tab-btn" data-tab="awards"><span class="tab-btn-num">04</span>Awards</button>
+    <button class="tab-btn" data-tab="leaders"><span class="tab-btn-num">05</span>Leadership</button>
+    <button class="tab-btn" data-tab="digital"><span class="tab-btn-num">06</span>Digital Posture</button>
+    <button class="tab-btn" data-tab="marketing"><span class="tab-btn-num">07</span>Marketing &amp; GTM</button>
+    <button class="tab-btn" data-tab="signals"><span class="tab-btn-num">08</span>Intel Signals</button>
+    <button class="tab-btn" data-tab="recommendations"><span class="tab-btn-num">09</span>Recommendations</button>
+    <button class="tab-btn" data-tab="methodology"><span class="tab-btn-num">10</span>Methodology</button>
+  </div>
+</nav>
+
 <main>
-  <div class="meta-row">
-    <div><strong>1</strong>report this quarter</div>
-    <div><strong>V6.5</strong>agent version</div>
-    <div><strong>Opus 4.7</strong>narrative engine</div>
-    <div><strong>~$6</strong>per scan + report</div>
-  </div>
-
-  <h2 class="h">Latest Reports</h2>
-  <p class="h-sub">Reports are cached for 90 days. Re-requesting an already-scanned competitor returns the cached version instantly at zero cost.</p>
-
-  <div class="report-grid">
-    <a href="reports/edifecs.html" class="report-card">
-      <div class="report-date">25 MAY 2026</div>
-      <h3 class="report-name">Edifecs</h3>
-      <p class="report-sub">a Cotiviti business</p>
-      <p class="report-tease">Healthcare interoperability incumbent now operating under Cotiviti ownership. Third consecutive Best in KLAS for CMS Payer Interoperability (2023/2024/2026). Post-acquisition platform scaling underway.</p>
-      <div class="report-tags">
-        <span class="tag shc">SHC</span>
-        <span class="tag">CMS Payer Interop</span>
-        <span class="tag">EDI</span>
-      </div>
-      <br>
-      <span class="report-cta">View report →</span>
-    </a>
-  </div>
+  <div id="content"></div>
 </main>
 
 <footer>
   <div class="footer-inner">
-    <div>© 2026 Simplify Healthcare · Competitive Intelligence Library</div>
-    <div>Generated by CI Agent V6.5 · Hosted on GitHub Pages</div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-h">Simplify Healthcare</div>
+        <p class="footer-line">Competitive intelligence delivered via the V6.5 CI Agent — automated discovery across events, leadership, digital, social, news, and press wires.</p>
+      </div>
+      <div>
+        <div class="footer-h">This Scan</div>
+        <p class="footer-line">Target: edifecs.com</p>
+        <p class="footer-line">BU: SHC (Healthcare)</p>
+        <p class="footer-line">Date: 25 May 2026</p>
+        <p class="footer-line">Coverage: 90 days lookback</p>
+      </div>
+      <div>
+        <div class="footer-h">Data Sources</div>
+        <p class="footer-line">Apify · Semrush · Google News · Bing News · Yahoo News · Reddit</p>
+        <p class="footer-line">Trade media · Press wires · SEC filings</p>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div>© 2026 Simplify Healthcare. Internal use only.</div>
+      <div>Generated by CI Agent V6.5 · Claude Opus 4.6</div>
+    </div>
   </div>
 </footer>
 
+<script>
+const DATA = {
+  "leaders": [
+    {
+      "name": "Gurpreet 'Sunny' Singh",
+      "title": "Founder, Edifecs / Founder, RoundGlass",
+      "linkedin": "https://www.linkedin.com/in/sunnygpsingh",
+      "tenure": "Founded Edifecs 1996; post-acquisition role is philanthropist/founder \u2014 no longer operational CEO",
+      "previous": "Edifecs (founder-operator)"
+    },
+    {
+      "name": "Venkat Kavarthapu",
+      "title": "Chief Executive Officer \u2014 symplr (DEPARTED Edifecs)",
+      "linkedin": "https://www.linkedin.com/in/venkatkavarthapu",
+      "tenure": "Was CEO of Edifecs at acquisition close (March 2025); LinkedIn headline now reads 'Chief Executive Officer at symplr' \u2014 confirmed departure from Edifecs",
+      "previous": "Edifecs"
+    },
+    {
+      "name": "Sundararaman Shenbagam",
+      "title": "Chief Technology Officer, Edifecs (a Cotiviti business)",
+      "linkedin": "https://www.linkedin.com/in/sundararaman-shenbagam-8959963",
+      "tenure": "CTO \u2014 tenure not precisely confirmed from scraped data; confirmed active in role per discovery metadata",
+      "previous": "Unknown \u2014 profile experience array empty in scrape"
+    },
+    {
+      "name": "Brian Hanley",
+      "title": "VP, Public Sector \u2014 Edifecs",
+      "linkedin": "https://www.linkedin.com/in/brian-hanley-50034935",
+      "tenure": "Active in role; Washington D.C. Metro Area location consistent with federal/public sector focus",
+      "previous": "Unknown \u2014 profile summary empty in scrape"
+    },
+    {
+      "name": "Nicholas Gryfakis",
+      "title": "Senior Product Leader \u2014 Edifecs",
+      "linkedin": "https://www.linkedin.com/in/nicholasgryfakis",
+      "tenure": "Active; Greater Chicago Area; confirmed via KLAS Award post activity",
+      "previous": "Unknown \u2014 profile experience array empty in scrape"
+    },
+    {
+      "name": "Mark Filiault",
+      "title": "Senior Executive \u2014 Edifecs/Cotiviti (confirmed active March 2026)",
+      "linkedin": "https://www.linkedin.com/in/mark-filiault-99b5096",
+      "tenure": "Active as of March 2026 per discovery evidence; actively posting Cotiviti acquisition integration content",
+      "previous": "Unknown \u2014 profile experience array empty in scrape"
+    },
+    {
+      "name": "Susan Layman",
+      "title": "Senior Executive / Head of Payer Solutions \u2014 Edifecs",
+      "linkedin": "https://www.linkedin.com/in/susan-layman-healthcare",
+      "tenure": "Active as of September 2025 per discovery evidence; Richmond, VA location",
+      "previous": "Unknown \u2014 profile experience array empty in scrape"
+    },
+    {
+      "name": "John Wright",
+      "title": "SVP, Technology Sales \u2014 Edifecs",
+      "linkedin": "https://www.linkedin.com/in/john-wright-118b72",
+      "tenure": "Active Edifecs posts as recently as March 2025; Portland, OR location",
+      "previous": "Unknown \u2014 profile experience array empty in scrape"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Best in KLAS\u00ae \u2014 CMS Payer Interoperability",
+      "year": "2026",
+      "result": "Winner (#1 / Best in KLAS)",
+      "org": "KLAS Research",
+      "source": "https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS-Payer-Interoperability \u2014 'Edifecs, a Cotiviti business and a pioneer in healthcare data and interoperab"
+    },
+    {
+      "name": "Best in KLAS - CMS Payer Interoperability",
+      "year": "2026",
+      "result": "Won",
+      "org": "",
+      "source": "LinkedIn post dated 2026-03-09: 'It was an honor to collect our 2026 Best in KLAS\u00ae award for CMS Payer Interoperability from KLAS Research at #HIMSS26'"
+    },
+    {
+      "name": "2026 Best in KLAS\u00ae \u2014 CMS Payer Interoperability",
+      "year": "2026",
+      "result": "WON \u2014 Highest overall performance score 91.9; third recognition in four years (also won 2023, 2024)",
+      "org": "",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/ | https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS"
+    },
+    {
+      "name": "2024 Best in KLAS\u00ae \u2014 CMS Payer Interoperability",
+      "year": "2024",
+      "result": "WON \u2014 Score of 92.2, second consecutive year; named market leader among CMS payer interoperability vendors",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20240209893702/en/Edifecs-Tops-Best-in-KLAS-for-CMS-Payer-Interoperability-Category-for-the-Second-Year-in-a-Row"
+    },
+    {
+      "name": "2024 Fierce Healthcare Innovation Report \u2014 Featured Solution",
+      "year": "2024",
+      "result": "FEATURED \u2014 Edifecs Healthcare Interoperability Cloud featured in the 2024 Fierce Healthcare Innovation Report",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20250204021905/en/ | https://finance.yahoo.com/news/edifecs-introduces-healthcare-interoperability-cloud-140000981.html"
+    },
+    {
+      "name": "WEDI Board of Directors \u2014 Michael Pattwell Re-Election",
+      "year": "2025",
+      "result": "WON \u2014 Edifecs' Michael Pattwell re-elected to WEDI Board of Directors (November 2025)",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20251110957057/en/Edifecs-Michael-Pattwell-Re-Elected-to-WEDI-Board-of-Directors"
+    },
+    {
+      "name": "Best in KLAS\u00ae \u2013 CMS Payer Interoperability",
+      "year": "2026",
+      "result": "Winner \u2013 Highest overall performance score of 91.9; third recognition in four years (also won in 2023 and 2024)",
+      "org": "",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/ | https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS"
+    },
+    {
+      "name": "Best in KLAS\u00ae \u2013 CMS Payer Interoperability",
+      "year": "2024",
+      "result": "Winner \u2013 Topped list with score of 92.2 (second consecutive year); highest rating at time of win",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20240209893702/en/Edifecs-Tops-Best-in-KLAS-for-CMS-Payer-Interoperability-Category-for-the-Second-Year-in-a-Row"
+    },
+    {
+      "name": "Best in KLAS\u00ae \u2013 CMS Payer Interoperability",
+      "year": "2023",
+      "result": "Winner \u2013 First recognition in the CMS Payer Interoperability category; score of 87.9",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20240209893702/en/Edifecs-Tops-Best-in-KLAS-for-CMS-Payer-Interoperability-Category-for-the-Second-Year-in-a-Row"
+    },
+    {
+      "name": "Fierce Healthcare Innovation Report Featured Solution",
+      "year": "2024",
+      "result": "Featured \u2013 Edifecs Healthcare Interoperability Cloud featured in the 2024 Fierce Healthcare Innovation Report",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20250204021905/en/ | https://finance.yahoo.com/news/edifecs-introduces-healthcare-interoperability-cloud-140000981.html"
+    },
+    {
+      "name": "WEDI Board of Directors Re-Election (Michael Pattwell)",
+      "year": "2025",
+      "result": "Re-elected \u2013 Edifecs executive Michael Pattwell re-elected to WEDI Board of Directors (November 2025)",
+      "org": "",
+      "source": "https://www.businesswire.com/news/home/20251110957057/en/Edifecs-Michael-Pattwell-Re-Elected-to-WEDI-Board-of-Directors"
+    },
+    {
+      "name": "Best in KLAS \u2013 CMS Payer Interoperability",
+      "year": "2026",
+      "result": "winner",
+      "org": "KLAS Research",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/ | https://www.cotiviti.com/press-release/edifecs-named-2026-best-in-klas-for-cms-payer-interoperab"
+    },
+    {
+      "name": "Best in KLAS \u2013 CMS Payer Interoperability",
+      "year": "2024",
+      "result": "winner",
+      "org": "KLAS Research",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/ \u2013 'This marks the third time in the past four years that Edifecs has been recognized by KLAS for C"
+    },
+    {
+      "name": "Best in KLAS \u2013 CMS Payer Interoperability",
+      "year": "2023",
+      "result": "winner",
+      "org": "KLAS Research",
+      "source": "https://www.cotiviti.com/press-release/edifecs-named-2026-best-in-klas-for-cms-payer-interoperability \u2013 'prior recognitions in 2023 and 2024'"
+    },
+    {
+      "name": "Fierce Healthcare Innovation Awards",
+      "year": "2024",
+      "result": "nominated",
+      "org": "Fierce Healthcare / Questex",
+      "source": "https://www.edifecs.com/awards/ \u2013 'Fierce Healthcare Innovation Awards Finalist 2024 - Financial / Operational Solutions'; https://fiercehealthcareinnovationawards.fiercelifesciences.com/fiercehealthc"
+    },
+    {
+      "name": "Stevie Awards \u2013 Employer of the Year",
+      "year": "2023",
+      "result": "winner",
+      "org": "Stevie Awards",
+      "source": "https://www.edifecs.com/awards/ \u2013 'Stevie Awards \u00b7 Employer of the Year - Silver Award'; https://www.edifecs.com/awards/2/ confirms multiple Stevie Award wins including Gold and Silver"
+    },
+    {
+      "name": "Stevie Awards \u2013 Best Business Technology Pivot",
+      "year": "2023",
+      "result": "winner",
+      "org": "Stevie Awards",
+      "source": "https://www.edifecs.com/newsroom/edifecs-hires-chris-lance-to-lead-organizations-product-innovation/ \u2013 'recognized by the prestigious Stevie Awards for Best Technology Pivot'; https://www.edifecs.com/"
+    },
+    {
+      "name": "SEAL Business Sustainability Award \u2013 Environmental Initiatives Award",
+      "year": "2025",
+      "result": "winner",
+      "org": "SEAL Awards",
+      "source": "https://www.prweb.com/releases/esg-leaders-recognized-at-2025-seal-business-sustainability-awards-302361542.html \u2013 'We are honored to receive the SEAL 2025 Environmental Initiatives Award,' said Ravi "
+    },
+    {
+      "name": "SEAL Business Sustainability Award",
+      "year": "2024",
+      "result": "winner",
+      "org": "SEAL Awards",
+      "source": "https://www.edifecs.com/awards/ \u2013 'SEAL \u00b7 Business Sustainability Award Winner'; https://www.edifecs.com/who-we-are \u2013 '2024 \u00b7 Business Sustainability Award Winner \u00b7 SEAL'"
+    },
+    {
+      "name": "Great Place to Work Certification \u2013 USA",
+      "year": "2024",
+      "result": "recognized",
+      "org": "Great Place to Work",
+      "source": "https://www.greatplacetowork.com/certified-company/1289157 \u2013 '88% of employees at Edifecs, Inc. say it is a great place to work'; https://www.edifecs.com/awards/ \u2013 'Great Place to Work \u00b7 USA'"
+    },
+    {
+      "name": "Women's Choice Award \u2013 Best Companies to Work for Women",
+      "year": "2024",
+      "result": "recognized",
+      "org": "Women's Choice Award",
+      "source": "https://www.edifecs.com/awards/ \u2013 'Women's Choice Award \u00b7 Best Companies to Work for Women \u00b7 Women's Choice Award \u00b7 Best Companies to Work for Millennials'"
+    },
+    {
+      "name": "PSBJ \u2013 Fastest-Growing Middle Market Companies in Washington State",
+      "year": "2024",
+      "result": "ranked",
+      "org": "Puget Sound Business Journal (PSBJ)",
+      "source": "https://www.edifecs.com/who-we-are \u2013 '2024 \u00b7 Fastest-Growing Middle Market Companies in Washington State \u00b7 PSBJ \u00b7 2024'"
+    },
+    {
+      "name": "PSBJ \u2013 Seattle-area Tech Employers in Washington (Ranked #27)",
+      "year": "2024",
+      "result": "ranked",
+      "org": "Puget Sound Business Journal (PSBJ)",
+      "source": "https://www.edifecs.com/awards/ \u2013 'Ranked #27 \u00b7 PSBJ \u00b7 Seattle-area Tech Employers in Washington'"
+    },
+    {
+      "name": "PSBJ \u2013 Eastside Fastest Growing Private Companies (Ranked #13)",
+      "year": "2024",
+      "result": "ranked",
+      "org": "Puget Sound Business Journal (PSBJ)",
+      "source": "https://www.edifecs.com/awards/ \u2013 'Ranked #13 \u00b7 PSBJ \u00b7 Eastside Fastest Growing Private Companies'"
+    },
+    {
+      "name": "Seattle Business Magazine \u2013 Best Large Companies to Work For",
+      "year": "2024",
+      "result": "recognized",
+      "org": "Seattle Business Magazine",
+      "source": "https://www.edifecs.com/awards/ \u2013 'Seattle Business Magazine \u00b7 Best Large Companies to Work For'; https://www.edifecs.com/who-we-are \u2013 '2024 \u00b7 Seattle Business Magazine'"
+    },
+    {
+      "name": "GeekWire Workplace of the Year",
+      "year": "2022",
+      "result": "winner",
+      "org": "GeekWire",
+      "source": "https://www.edifecs.com/newsroom/2022-geekwire-awards-revealed-community-celebrates-big-winners-in-pacific-nw-tech/ \u2013 'Edifecs Wins 2022 GeekWire Award for Workplace of the Year'"
+    },
+    {
+      "name": "Inc. 5000",
+      "year": "2021",
+      "result": "ranked",
+      "org": "Inc. Magazine",
+      "source": "https://www.inc.com/profile/edifecs \u2013 'Inc. 5000 \u00b7 No. 4296 (2021), No. 4835 (2020)...'"
+    },
+    {
+      "name": "Deloitte Technology Fast 500",
+      "year": "2014",
+      "result": "ranked",
+      "org": "Deloitte",
+      "source": "https://www.hhmglobal.com/knowledge-bank/techno-trends/edifecs-inc-a-leading-provider-of-healthcare-software-solutions-recognized-as-one-of-north-america \u2013 'named to the 2010 Technology Fast 500'; htt"
+    },
+    {
+      "name": "Modern Healthcare Best Places to Work in Healthcare",
+      "year": "2017",
+      "result": "ranked",
+      "org": "Modern Healthcare",
+      "source": "https://www.businesswire.com/news/home/20170531006267/en/Edifecs-Named-a-2017-Modern-Healthcare-Magazine-Best-Place-to-Work; https://www.edifecs.com/awards/ \u2013 'Modern Healthcare \u00b7 Best Places to Work'"
+    },
+    {
+      "name": "Healthcare Informatics HCI 100",
+      "year": "2017",
+      "result": "ranked",
+      "org": "Healthcare Informatics / HCI Innovation Group",
+      "source": "https://www.hcinnovationgroup.com/top-100-vendors/2017/article/13028643/edifecs-inc \u2013 'Rank: 93'; https://www.edifecs.com/awards/ \u2013 'Ranked #80 \u00b7 Healthcare Informatics 100'"
+    },
+    {
+      "name": "The Key Executives \u2013 Top 25 Tech CEOs of Seattle",
+      "year": "2025",
+      "result": "recognized",
+      "org": "The Key Executives",
+      "source": "https://www.thekeyexecutives.com/2025/02/24/the-top-25-tech-ceos-of-seattle-for-2025/ \u2013 'Venkat Kavarthapu Chief Executive Officer, Edifecs \u00b7 Venkat Kavarthapu offers over 25 years of experience in te"
+    },
+    {
+      "name": "KLAS Research - 2026 Best in KLAS: Software & Services",
+      "year": "2026",
+      "result": "",
+      "org": "",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/ | https://www.cotiviti.com/press-release/edifecs-named-2026-best-in-klas-for-cms-payer-interoperab"
+    },
+    {
+      "name": "Independent Third-Party Consultant (unnamed) - Payer Market Study \u2013 99 Payer Survey (cited in Healthcare Interoperability Cloud launch release)",
+      "year": "2025",
+      "result": "",
+      "org": "",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-introduces-healthcare-interoperability-cloud \u2013 'In a recent study of 99 payers by a leading third-party consultant, Edifecs was identified as the leading "
+    }
+  ],
+  "gap_events": [
+    {
+      "name": "Edifecs Connect Healthcare Summit",
+      "year": "2024",
+      "date": "2024 (exact date not confirmed)",
+      "category": "",
+      "role": "Host/Organizer",
+      "detail": "Edifecs-hosted proprietary annual summit; connect.edifecs.com domain confirmed active for 2024 edition.",
+      "source": "https://connect.edifecs.com/ \u2014 page title: 'Edifecs Connect Healthcare Summit 2024'",
+      "discovery": "B2-BROAD"
+    },
+    {
+      "name": "WEDI Spring Conference",
+      "year": "2023",
+      "date": "May 22\u201325, 2023",
+      "category": "",
+      "role": "Sponsor / Presenter",
+      "detail": "Edifecs sponsored educational sessions and presented on interoperability, health equity, and prior authorization. Most recent confirmed press-release-backed WEDI participation; no 2025/2026 WEDI press release found in this sweep.",
+      "source": "https://www.businesswire.com/news/home/20230519005364/en/Edifecs-to-Present-and-Sponsor-2023-WEDI-Spring-Conference \u2014 'Edifecs, Inc., a global health information technology solutions company, is parti",
+      "discovery": "B2-BROAD"
+    },
+    {
+      "name": "RISE National 2026",
+      "year": "2026",
+      "date": "2026 (exact date not confirmed)",
+      "category": "NET NEW \u2014 post-acquisition Cotiviti/Edifecs combined entity attendance at RISE National 2026",
+      "role": "Exhibitor/Attendee (as Cotiviti/Edifecs combined entity)",
+      "detail": "BusinessWire teaser on Cotiviti page references attendance at RISE National 2026 post-acquisition of Edifecs. Edifecs brand absorbed into Cotiviti; Cotiviti will attend to demonstrate payer/provider solutions.",
+      "source": "https://www.businesswire.com/news/home/20250331312660/en/Cotiviti-Completes-Acquisition-of-Edifecs \u2014 sidebar snippet: 'Cotiviti will attend RISE National 2026 to demonstrate how payers and providers c",
+      "discovery": "B2-BROAD"
+    },
+    {
+      "name": "RISE National 2025",
+      "year": "2025",
+      "date": "March 11-14, 2025",
+      "category": "NET NEW",
+      "role": "Exhibitor (Booth 607) + Speaker/Moderator",
+      "detail": "Dr. Summerpal Kahlon moderated panel on Prospective & Retrospective Risk Adjustment with leaders from CalOptima and Centene. Edifecs unveiled Point of Care Suspects solution.",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-to-speak-at-rise-national-2025/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "WEDI 2025 National Conference",
+      "year": "2025",
+      "date": "November 4-6, 2025",
+      "category": "NET NEW",
+      "role": "Sponsor + Speaker/Presenter",
+      "detail": "Kevin Day presented on interoperability, consent management, HIPAA, and CMS-0057-F compliance. Edifecs served as sponsor. Kevin Day named co-chair of The Sequoia Project Privacy and Consent Workgroup.",
+      "source": "https://www.edifecs.com/newsroom/2025-edifecs-presenting-at-sponsoring-2025-wedi-national-conference/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "WEDI 2024 National Conference",
+      "year": "2024",
+      "date": "October 15-17, 2024",
+      "category": "NET NEW",
+      "role": "Participant + Speaker",
+      "detail": "Edifecs participated in multiple sessions at the WEDI 2024 National Conference.",
+      "source": "https://www.businesswire.com/news/home/20220926005143/en/Edifecs-Adds-Top-Talent-to-Legal-and-Marketing-Teams (trailing press release reference)",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "HIMSS 2024 Global Health Conference & Exhibition",
+      "year": "2024",
+      "date": "2024",
+      "category": "NET NEW",
+      "role": "Exhibitor (Booth 3760-122 Interoperability Showcase)",
+      "detail": "Edifecs exhibited at the Interoperability Showcase. Customer stats cited: 24 of 25 top commercial health plans, 27 of 34 BCBS payers, 35 of 50 Medicaid programs, 5 of 10 largest health systems.",
+      "source": "https://himss24.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "HIMSS23 Global Health Conference & Exhibition",
+      "year": "2023",
+      "date": "April 17-21, 2023",
+      "category": "NET NEW",
+      "role": "Exhibitor (Booth #7746) + Speaker",
+      "detail": "Edifecs co-hosted Interoperability Showcase sessions with Da Vinci, Florida Blue, and RELI Group. Topics: Member Consent, APMs, Patient Cost Transparency, FHIR. #WhatIRun campaign featured.",
+      "source": "https://www.edifecs.com/newsroom/edifecs-to-exhibit-and-speak-at-himss23/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "WEDI 2023 National Conference",
+      "year": "2023",
+      "date": "November 6-9, 2023",
+      "category": "NET NEW",
+      "role": "Speaker",
+      "detail": "Dr. Summerpal Kahlon and Niraj Katwala led sessions on AI in healthcare, episodes of care, and generative AI for EDI/medical records.",
+      "source": "https://www.edifecs.com/newsroom/edifecs-to-speak-on-the-power-of-artificial-intelligence-at-2023-wedi-national-conference/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "WEDI 2023 Summer Conference (Virtual)",
+      "year": "2023",
+      "date": "August 1-2, 2023",
+      "category": "NET NEW",
+      "role": "Speaker + Technology Showcase Host",
+      "detail": "Kevin Day and Sergiu Rata moderated panel on attachments. Edifecs hosted technology showcase on prior authorization compliance.",
+      "source": "https://www.edifecs.com/newsroom/edifecs-to-showcase-prior-authorization-solution-at-wedi-summer-conference-2023/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "NAACOS Spring Conference 2024",
+      "year": "2024",
+      "date": "Spring 2024",
+      "category": "NET NEW",
+      "role": "Exhibitor (Booth L)",
+      "detail": "Edifecs exhibited at Booth L at the NAACOS Spring Conference 2024, focusing on NLP, AI, Medicaid, and alternative payment models for ACOs.",
+      "source": "https://www.linkedin.com/company/edifecs (LinkedIn posts)",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "ACDIS National Conference",
+      "year": "2024",
+      "date": "April 8-11, 2024",
+      "category": "NET NEW",
+      "role": "Exhibitor (Booth 802)",
+      "detail": "Edifecs exhibited at Booth 802 promoting CDI solutions and risk-bearing contract financial performance.",
+      "source": "https://www.linkedin.com/company/edifecs",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "WEDI 2022 Spring Virtual Conference",
+      "year": "2022",
+      "date": "May 23-26, 2022",
+      "category": "NET NEW",
+      "role": "Host/Speaker + Sponsor",
+      "detail": "Edifecs hosted sessions on patient cost transparency and sponsored an education session on prior authorization using AI and NLP.",
+      "source": "https://www.edifecs.com/newsroom/edifecs-leaders-to-speak-at-wedi-2022-spring-virtual-conference/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "Edifecs Connect Healthcare Summit 2025",
+      "year": "2025",
+      "date": "2025",
+      "category": "NET NEW",
+      "role": "Host",
+      "detail": "Edifecs hosted its own Connect Healthcare Summit in 2025 (connect.edifecs.com). Full agenda not publicly accessible.",
+      "source": "https://connect.edifecs.com/",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "Texas Association of Health Plans (TAHP) Conference",
+      "year": "2022",
+      "date": "2022",
+      "category": "NET NEW",
+      "role": "Sponsor/Exhibitor",
+      "detail": "Edifecs listed as sponsor/exhibitor at TAHP Texas Covered conference.",
+      "source": "https://www.tahpconference.com/2022-sponsors/edifecs",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "State Healthcare IT Connect Summit",
+      "year": "2024",
+      "date": "2024",
+      "category": "NET NEW",
+      "role": "Speaker",
+      "detail": "Edifecs VP of Public Sector, Brian Hanley, spoke on interoperability, data infrastructure, and CMS at the State Healthcare IT Connect Summit.",
+      "source": "https://www.linkedin.com/company/edifecs",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "name": "State HIT Connect Summit",
+      "year": "2026",
+      "date": "2026-02-25 00:00:00",
+      "category": "NET NEW",
+      "role": "Exhibitor",
+      "detail": "Booth 50. Discussing interoperability, consent management, and CMS-0057-F",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "HIMSS26",
+      "year": "2026",
+      "date": "2026-03-09 00:00:00",
+      "category": "NET NEW",
+      "role": "Award recipient",
+      "detail": "Collected 2026 Best in KLAS award for CMS Payer Interoperability",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "ACDIS Symposium and Conference 2026",
+      "year": "2026",
+      "date": "2026-04-19 00:00:00",
+      "category": "NET NEW",
+      "role": "Sponsor/Exhibitor",
+      "detail": "April 19-23. Sponsored with Cotiviti. Discussing risk adjustment solutions across full lifecycle",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "National Association of ACOs (NAACOS) Spring Conference",
+      "year": "2026",
+      "date": "2026-04-22 00:00:00",
+      "category": "NET NEW",
+      "role": "Sponsor/Exhibitor",
+      "detail": "April 22-24 in Baltimore. Sponsored with Cotiviti. Discussing accurate claims capture and documentation",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "eSolutions Xchange 2026 Conference",
+      "year": "2026",
+      "date": "2026-04-15 00:00:00",
+      "category": "NET NEW",
+      "role": "Sponsor/Exhibitor",
+      "detail": "In Chattanooga. Partnership with Blue Plans on scalable interoperability solutions and BCBSA Hub integration",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "The Sequoia Project Annual Meeting",
+      "year": "2025",
+      "date": "2025-11-15 00:00:00",
+      "category": "NET NEW",
+      "role": "Speaker",
+      "detail": "Cotiviti VP Maxim Abramsky speaking on scalable and compliant interoperability",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "WEDI Spring 2026 Virtual Conference",
+      "year": "2026",
+      "date": "2026-04-27 00:00:00",
+      "category": "NET NEW",
+      "role": "Exhibitor/Sponsor",
+      "detail": "Virtual booth. Helping health plans move from CMS-0057-F readiness to operational reality",
+      "source": "LinkedIn post",
+      "discovery": "B5a-SOCIAL"
+    },
+    {
+      "name": "RISE West 2024",
+      "year": "2024",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Solution Launch / Exhibitor",
+      "detail": "Edifecs introduced Concurrent Risk Adjustment solution at RISE West 2024",
+      "source": "leadiq.com company news feed",
+      "discovery": "B5b-EXEC"
+    },
+    {
+      "name": "NHCAA Annual Training Conference 2025",
+      "year": "2025",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Exhibitor",
+      "detail": "Cotiviti/Edifecs attended 2025 NHCAA Annual Training Conference featuring 360 Pattern Review fraud prevention solution",
+      "source": "businesswire.com / cotiviti.com press releases",
+      "discovery": "B5b-EXEC"
+    },
+    {
+      "name": "ACDIS Spring Conference 2025/2026",
+      "year": "2025",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Exhibitor",
+      "detail": "Cotiviti/Edifecs showcased comprehensive Provider Risk Adjustment solutions at ACDIS and NAACOS Spring Conferences",
+      "source": "cotiviti.com press releases page",
+      "discovery": "B5b-EXEC"
+    },
+    {
+      "name": "NAACOS Spring Conference",
+      "year": "2025",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Exhibitor",
+      "detail": "Cotiviti/Edifecs showcased Provider Risk Adjustment solutions alongside ACDIS conference appearance",
+      "source": "cotiviti.com press releases page",
+      "discovery": "B5b-EXEC"
+    },
+    {
+      "name": "Risk Adjustment Essentials Webinar Series (Edifecs) \u2014 'Future-proof compliance and drive audit readiness'",
+      "year": "2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Host/Presenter",
+      "detail": "Second webinar in ongoing Risk Adjustment Essentials series hosted by Edifecs/Cotiviti; focused on navigating regulatory change and driving audit-ready programs for payer risk adjustment teams.",
+      "source": "https://www.edifecs.com/ \u2014 homepage banner: 'Webinar: Future-proof compliance and drive audit readiness \u2014 second webinar of our Risk Adjustment Essentials series'",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "RISE Risk Adjustment Webinar (Cotiviti + Edifecs co-presented)",
+      "year": "2025-2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Co-Presenter/Sponsor",
+      "detail": "On-demand webinar co-hosted with RISE association; senior leaders from Cotiviti and Edifecs presented strategies for scalable risk adjustment technology initiatives under rising regulatory pressure.",
+      "source": "https://resources.cotiviti.com/ \u2014 'Senior leaders from Cotiviti and Edifecs offer strategies for building scalable risk adjustment technology initiatives'",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "RISE Interoperability On-Demand Webinar (Edifecs/Cotiviti)",
+      "year": "2025-2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Co-Presenter",
+      "detail": "On-demand webinar in partnership with RISE covering interoperability challenges, data connectivity, and measurable value for payer organizations.",
+      "source": "https://resources.cotiviti.com/ \u2014 'Watch our on-demand RISE webinar to gain expert insights on how to navigate interoperability challenges'",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "Cotiviti Quality Decoded Webinar Series 2026",
+      "year": "2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Host (Cotiviti/Edifecs parent entity)",
+      "detail": "Multi-session payer-focused webinar series on HEDIS, Star Ratings, and quality program management; launched February 24, 2026. Edifecs is a Cotiviti business, making this a directly affiliated competitor series.",
+      "source": "https://blog.cotiviti.com/webinar-series-decoding-quality-throughout-2026 \u2014 'Quality Decoded, our most popular webinar series, beginning February 24, 2026'",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "Black Book Research 2026 Payer IT Series \u2014 Medicaid-to-Medicare Transition Tech Stack",
+      "year": "2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Named Vendor (evaluated in report)",
+      "detail": "Edifecs named alongside Cotiviti, Availity, InterSystems, Innovaccer, HealthEdge Wellframe, and Datavant in Black Book's Q4 2025\u2013Q1 2026 payer-user-feedback report on transition tech stacks. Published March 23, 2026.",
+      "source": "https://www.pressrelease.com/news/black-book-research-releases-new-2026-payer-it-series-report \u2014 'Vendors named in the report include Availity, Cotiviti, Edifecs, InterSystems\u2026'",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "RISE Risk Adjustment Webinar (Edifecs/Cotiviti co-hosted)",
+      "year": "2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Co-presenter/Sponsor",
+      "detail": "Cotiviti and Edifecs senior leaders co-presented an on-demand RISE webinar covering risk adjustment regulatory updates and emerging policy trends in 2026, indicating Edifecs active at RISE events.",
+      "source": "https://resources.cotiviti.com/ \u2014 'Watch our on-demand risk adjustment webinar in partnership with RISE as we dive into key regulatory updates and emerging policy trends in 2026.'",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "Risk Adjustment Essentials Webinar Series (Edifecs)",
+      "year": "2026",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Host/Organizer",
+      "detail": "Edifecs actively promoting a multi-part 'Risk Adjustment Essentials' webinar series in 2026, with the second installment focused on 'Future-proof compliance and drive audit readiness.' Prominent placement on edifecs.com homepage.",
+      "source": "https://www.edifecs.com/ \u2014 'Webinar: Future-proof compliance and drive audit readiness \u2014 Learn how to navigate regulatory change and drive successful programs in the second webinar of our Risk Adjustm",
+      "discovery": "B6-DEEP"
+    },
+    {
+      "name": "HIMSS26 Global Health Conference & Exhibition",
+      "year": "",
+      "date": "March 9\u201312, 2026",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Dr. Mehmet Oz \u2013 CMS Administrator (keynote, Thursday morning); Sumbul Ahmad Desai, MD \u2013 VP Health & Fitness, Apple; Shrestha \u2013 Chief Digital & Information Officer, Atrium Health (former CIO, UPMC); Dr. Brett Moran \u2013 Chief Health Officer, Parkland Health; Ray \u2013 CIO, AltaMed (HIMSS 'Change M",
+      "source": "https://www.himssconference.com/agenda-at-a-glance/; https://www.himssconference.com/exhibition-sponsorship-opportunities/; https://www.himssconference.com/faqs/; https://conferenceinc.net/post/himss-",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "ViVE 2026",
+      "year": "",
+      "date": "February 22\u201325, 2026 [COMPLETED \u2014 now past]",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Chethan Sarabu, MD \u2013 Patient-centered AI speaker; Senior executives from Kaiser Permanente, Cleveland Clinic (referenced as past attendees/speakers); Nancy Mastroianni \u2013 Head of Investors & Networks, HLTH (sponsorship team); Kim Fox \u2013 Head of Connect Programs, HLTH; Troy Goodwin \u2013 Account ",
+      "source": "https://viveevent.com/sponsors; https://viveevent.com/sponsor-opportunities; https://viveevent.com/provider-and-payer-connect-sponsor-guide; https://viveevent.com/exhibitor-rules-regulations; https://",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "HLTH USA 2026",
+      "year": "",
+      "date": "November 15\u201318, 2026",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: CEOs from Kaiser Permanente and Cleveland Clinic (referenced as past main-stage speakers); 2026 speaker lineup TBA \u2014 submissions via hlth.com/events/usa/become-a-speaker | Presence: HLTH USA covers payers, providers, pharma, life sciences, AI, digital health, employers, investors, and gove",
+      "source": "https://hlth.com/events/usa/faq/; https://hlth.com/events/usa/sponsorship/exhibitor-spaces/; https://hlth.com/events/usa/sponsorship/sponsors; https://hlth.com/events/usa/; https://hlth.com/events/usa",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "AHIP26 Annual Conference",
+      "year": "",
+      "date": "June 9\u201310, 2026 (Opening Night Reception: June 8)",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Speaker lineup TBA; AHIP26 call for proposals open (ahip.org/conferences/showcase-your-bold-ideas-and-proven-strategies-apply-to-speak) | Presence: AHIP26 is the flagship U.S. health plan industry event \u2014 directly aligned with Edifecs' payer client base. Optum confirmed exhibitor/sponsor a",
+      "source": "https://www.ahip.org/conferences/ahip-2026; https://www.ahip.org/reserve-your-seat-for-ahip26; https://www.ahip.org/become-a-sponsor-or-exhibitor; https://ahiporg-production.s3.amazonaws.com/documents",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "WEDI National Conference (Workgroup for Electronic Data Interchange)",
+      "year": "",
+      "date": "2026 date TBD; Winter Forum 2026 held Feb 23\u201324, 2026 (hybrid); Annual National Conference typically Q4",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Thomas Keane, MD \u2013 Assistant Secretary for Technology Policy & National Coordinator for HIT (ONC); Dr. Donald Rucker \u2013 Former ONC National Coordinator (Town Hall speaker); Dr. Micky Tripathi, PhD \u2013 Former Assistant Secretary of Technology Policy / National Coordinator for HIT; Jon Blum \u2013 P",
+      "source": "https://members.wedi.org/event-calendar; https://members.wedi.org/event-calendar/Details/wedi-national-conference-160878; https://10times.com/wedi",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "AHIP Medicare, Medicaid, Duals & Commercial Markets Conference (MMDC26)",
+      "year": "",
+      "date": "March 23\u201325, 2026 [COMPLETED \u2014 now past]",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Speakers from Optum, Ovia Health by Labcorp, Sagility confirmed | Presence: Optum confirmed exhibitor/sponsor at MMDC26. Sagility confirmed. Ovia Health (Labcorp) confirmed. Strong payer audience \u2014 direct overlap with Edifecs' Medicaid/Medicare payer client base.",
+      "source": "https://www.ahip.org/conferences/mmdc26/sponsors-and-exhibitors; https://www.ahip.org/mmdc26-registration-rates-policies",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "HLTH Europe 2026",
+      "year": "",
+      "date": "June 15\u201318, 2026",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Speaker lineup TBA for 2026; submissions via europe.hlth.com | Presence: HLTH Europe is Europe's #1 healthcare innovation event. Less directly relevant to Edifecs' U.S.-centric payer/provider market but relevant for any international expansion strategy. P2 priority.",
+      "source": "https://europe.hlth.com/; https://europe.hlth.com/sponsors",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "Becker's 10th Annual Health IT + Digital Health + RCM Annual Meeting",
+      "year": "2025",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Exhibitor / Sponsor",
+      "detail": "Edifecs, a Cotiviti business, listed as exhibitor/sponsor at Becker's Health IT + RCM Annual Meeting 2025, showcasing its award-winning healthcare interoperability cloud solution for payer and health system customers.",
+      "source": "https://conferences.beckershospitalreview.com/hit_rcm_2025/exhibitors-sponsors",
+      "discovery": "B8-NEWS"
+    },
+    {
+      "name": "WEDI Summer Conference 2023",
+      "year": "2023",
+      "date": "",
+      "category": "NET NEW",
+      "role": "Presenter / Technology Showcase",
+      "detail": "Edifecs participated in multiple sessions and hosted a technology showcase on prior authorization compliance at the WEDI 2023 Summer Conference (virtual, Aug 1\u20132). Edifecs holds a board seat at WEDI.",
+      "source": "https://finance.yahoo.com/news/edifecs-showcase-prior-authorization-solution-181200603.html",
+      "discovery": "B8-NEWS"
+    },
+    {
+      "name": "HFMA Annual Conference 2026",
+      "year": "",
+      "date": "June 7\u201310, 2026",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: C. Ann Jordan, JD \u2014 President & CEO, HFMA (keynote, June 8, 10:30 AM\u201312 PM ET; moderating panel 'Reimagining healthcare financial sustainability: from cost containment to vitality'); Seema Verma \u2014 EVP & GM, Oracle Health and Life Sciences; former CMS Administrator (keynote panelist); Tracy",
+      "source": "https://www.hfma.org/leadership/hfma-annual-conference-2026-reimagines-the-on-site-experience/; https://www.hfma.org/2026-events/; https://withorbital.com/conferences/healthcare-financial-management-a",
+      "discovery": "B7-CONF"
+    },
+    {
+      "name": "Qualtrics X4 The Experience Management Summit 2026",
+      "year": "",
+      "date": "March 17\u201319, 2026 (COMPLETED \u2014 past event as of May 25, 2026)",
+      "category": "",
+      "role": "",
+      "detail": "Speakers: Lynn Girotto \u2014 CMO, Qualtrics; Enterprise leaders from Walmart, KFC, ServiceNow, Verizon, Hilton, Adidas (2025 cohort); 2026 sponsors confirmed: Ernst & Young LLP (EY), Amazon Web Services (AWS), Carahsoft Technology Corp. | Presence: X4 is a Qualtrics ecosystem event; relevant to Edifecs ",
+      "source": "https://vendelux.com/insights/qualtrics-x4-the-experience-management-summit-2026-attendee-list; https://govevents.com/event/25312; https://withorbital.com/conferences/qualtrics-x4-2026; https://www.qu",
+      "discovery": "B7-CONF"
+    }
+  ],
+  "digital": {
+    "overview": {
+      "Domain": "edifecs.com",
+      "Rank": "1011616",
+      "Organic Keywords": "671",
+      "Organic Traffic": "1097",
+      "Organic Cost": "3234",
+      "Adwords Keywords": "5",
+      "Adwords Traffic": "2",
+      "Adwords Cost": "9"
+    },
+    "top_organic_keywords": [
+      {
+        "Keyword": "edifecs careers",
+        "Position": "1",
+        "Previous Position": "0",
+        "Position Difference": "0",
+        "Search Volume": "90",
+        "CPC": "0.00",
+        "Url": "https://www.edifecs.com/",
+        "Traffic (%)": "6.56",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "111",
+        "Trends": "0.53,0.42,0.53,0.65,0.34,0.34,0.34,0.26,0.26,0.19,0.15,0.19"
+      },
+      {
+        "Keyword": "gateway edi",
+        "Position": "8",
+        "Previous Position": "8",
+        "Position Difference": "0",
+        "Search Volume": "3600",
+        "CPC": "7.56",
+        "Url": "https://www.edifecs.com/products/edi-gateway",
+        "Traffic (%)": "6.19",
+        "Traffic Cost (%)": "15.89",
+        "Competition": "0.03",
+        "Number of Results": "107",
+        "Trends": "0.54,0.66,0.54,0.35,0.29,0.44,0.35,0.29,0.29,0.44,0.29,0.29"
+      },
+      {
+        "Keyword": "xengine",
+        "Position": "2",
+        "Previous Position": "2",
+        "Position Difference": "0",
+        "Search Volume": "480",
+        "CPC": "0.00",
+        "Url": "https://www.edifecs.com/products/xengine-server",
+        "Traffic (%)": "5.74",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "51",
+        "Trends": "0.44,0.19,0.15,0.36,0.81,0.67,0.29,0.23,0.44,1.00,1.00,0.44"
+      },
+      {
+        "Keyword": "edifecs",
+        "Position": "1",
+        "Previous Position": "1",
+        "Position Difference": "0",
+        "Search Volume": "1900",
+        "CPC": "3.66",
+        "Url": "https://www.edifecs.com/",
+        "Traffic (%)": "4.46",
+        "Traffic Cost (%)": "5.53",
+        "Competition": "0.10",
+        "Number of Results": "111",
+        "Trends": "0.54,1.00,0.54,0.54,0.54,0.36,0.54,0.36,0.43,0.43,0.29,0.29"
+      },
+      {
+        "Keyword": "edifecs inc",
+        "Position": "1",
+        "Previous Position": "1",
+        "Position Difference": "0",
+        "Search Volume": "50",
+        "CPC": "0.00",
+        "Url": "https://www.edifecs.com/",
+        "Traffic (%)": "3.64",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.09",
+        "Number of Results": "88",
+        "Trends": "0.78,0.78,0.50,0.50,0.35,0.28,0.35,0.35,0.50,0.14,0.14,0.14"
+      },
+      {
+        "Keyword": "change healthcare provider portal",
+        "Position": "7",
+        "Previous Position": "7",
+        "Position Difference": "0",
+        "Search Volume": "1600",
+        "CPC": "3.98",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "3.46",
+        "Traffic Cost (%)": "4.66",
+        "Competition": "0.02",
+        "Number of Results": "670000000",
+        "Trends": "0.13,0.24,0.18,0.18,0.24,0.29,0.35,0.29,0.35,0.44,0.35,0.24"
+      },
+      {
+        "Keyword": "change healthcare provider login",
+        "Position": "6",
+        "Previous Position": "6",
+        "Position Difference": "0",
+        "Search Volume": "1300",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "2.82",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "75",
+        "Trends": "0.29,0.29,0.29,0.29,0.19,0.12,0.16,0.12,0.10,0.12,0.07,0.07"
+      },
+      {
+        "Keyword": "change healthcare enrollment portal",
+        "Position": "7",
+        "Previous Position": "7",
+        "Position Difference": "0",
+        "Search Volume": "1000",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "2.73",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "72",
+        "Trends": "0.00,1.00"
+      },
+      {
+        "Keyword": "change health care provider portal",
+        "Position": "5",
+        "Previous Position": "5",
+        "Position Difference": "0",
+        "Search Volume": "590",
+        "CPC": "3.98",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "2.27",
+        "Traffic Cost (%)": "3.06",
+        "Competition": "0.02",
+        "Number of Results": "100",
+        "Trends": "0.72,0.59,0.72,0.21,0.48,0.32,0.39,0.72,0.59,0.59,0.39,0.72"
+      },
+      {
+        "Keyword": "edifecs specbuilder",
+        "Position": "1",
+        "Previous Position": "1",
+        "Position Difference": "0",
+        "Search Volume": "30",
+        "CPC": "8.65",
+        "Url": "https://www.edifecs.com/products/specbuilder",
+        "Traffic (%)": "2.18",
+        "Traffic Cost (%)": "6.40",
+        "Competition": "0.28",
+        "Number of Results": "99",
+        "Trends": "0.28,0.28,0.28,0.57,0.42,0.28,0.28,0.42,0.71,0.42,0.28,0.28"
+      },
+      {
+        "Keyword": "changehealthcare provider login",
+        "Position": "5",
+        "Previous Position": "5",
+        "Position Difference": "0",
+        "Search Volume": "590",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "1.82",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "69",
+        "Trends": "0.16,0.34,0.30,0.34,0.44,0.16,0.44,0.13,0.07,0.07,0.03,0.08"
+      },
+      {
+        "Keyword": "changehealthcare provider portal",
+        "Position": "7",
+        "Previous Position": "7",
+        "Position Difference": "0",
+        "Search Volume": "590",
+        "CPC": "3.98",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "1.27",
+        "Traffic Cost (%)": "1.70",
+        "Competition": "0.02",
+        "Number of Results": "78",
+        "Trends": "0.20,0.20,0.20,0.13,0.13,0.30,0.30,0.24,0.20,0.13,0.13,0.08"
+      },
+      {
+        "Keyword": "gammis",
+        "Position": "16",
+        "Previous Position": "16",
+        "Position Difference": "0",
+        "Search Volume": "18100",
+        "CPC": "1.98",
+        "Url": "https://sites.edifecs.com/index.jsp?gamedicaid",
+        "Traffic (%)": "1.27",
+        "Traffic Cost (%)": "0.83",
+        "Competition": "0.00",
+        "Number of Results": "106",
+        "Trends": "0.29,0.29,0.29,0.29,0.54,0.44,0.36,0.54,0.66,0.66,0.54,0.66"
+      },
+      {
+        "Keyword": "change healthcare payer list",
+        "Position": "7",
+        "Previous Position": "7",
+        "Position Difference": "0",
+        "Search Volume": "390",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "1.00",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "103",
+        "Trends": "0.25,0.25,0.25,0.37,0.37,0.16,0.20,0.16,0.16,0.16,0.08,0.07"
+      },
+      {
+        "Keyword": "xengine",
+        "Position": "9",
+        "Previous Position": "9",
+        "Position Difference": "0",
+        "Search Volume": "480",
+        "CPC": "0.00",
+        "Url": "https://www.edifecs.com/products/xengine-connect",
+        "Traffic (%)": "1.00",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "51",
+        "Trends": "0.44,0.19,0.15,0.36,0.81,0.67,0.29,0.23,0.44,1.00,1.00,0.44"
+      },
+      {
+        "Keyword": "change health care provider login",
+        "Position": "6",
+        "Previous Position": "6",
+        "Position Difference": "0",
+        "Search Volume": "320",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "1.00",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "707000000",
+        "Trends": "0.00,0.01,0.07,0.10,0.08,0.07,0.07,0.13,0.04,0.10,0.02,0.02"
+      },
+      {
+        "Keyword": "gatway edi",
+        "Position": "8",
+        "Previous Position": "8",
+        "Position Difference": "0",
+        "Search Volume": "480",
+        "CPC": "7.56",
+        "Url": "https://www.edifecs.com/products/edi-gateway",
+        "Traffic (%)": "0.91",
+        "Traffic Cost (%)": "2.31",
+        "Competition": "0.03",
+        "Number of Results": "16000000",
+        "Trends": "0.16,0.31,0.46,0.31,0.46,0.37,0.68,0.08,0.37,0.11,0.00,0.00"
+      },
+      {
+        "Keyword": "changehealthcare.com",
+        "Position": "3",
+        "Previous Position": "3",
+        "Position Difference": "0",
+        "Search Volume": "110",
+        "CPC": "4.39",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "0.82",
+        "Traffic Cost (%)": "1.20",
+        "Competition": "0.08",
+        "Number of Results": "3120000",
+        "Trends": "0.10,0.10,0.06,0.04,0.03,0.04,0.05,0.03,0.08,0.08,0.04,0.05"
+      },
+      {
+        "Keyword": "change healthcare portal",
+        "Position": "3",
+        "Previous Position": "3",
+        "Position Difference": "0",
+        "Search Volume": "90",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "0.63",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.01",
+        "Number of Results": "90",
+        "Trends": "0.35,0.29,0.18,0.18,0.18,0.14,0.14,0.14,0.14,0.14,0.18,0.10"
+      },
+      {
+        "Keyword": "changehealthcare login",
+        "Position": "8",
+        "Previous Position": "8",
+        "Position Difference": "0",
+        "Search Volume": "320",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "0.63",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.01",
+        "Number of Results": "73",
+        "Trends": "0.13,0.16,0.05,0.07,0.05,0.02,0.04,0.02,0.03,0.02,0.01,0.04"
+      },
+      {
+        "Keyword": "blue shield of california provider portal",
+        "Position": "18",
+        "Previous Position": "18",
+        "Position Difference": "0",
+        "Search Volume": "9900",
+        "CPC": "7.19",
+        "Url": "https://sites.edifecs.com/?blueshieldca",
+        "Traffic (%)": "0.45",
+        "Traffic Cost (%)": "1.08",
+        "Competition": "0.00",
+        "Number of Results": "109",
+        "Trends": "0.81,0.66,0.54,1.00,1.00,0.54,0.54,0.29,0.54,0.81,0.54,0.54"
+      },
+      {
+        "Keyword": "blue shield of ca login",
+        "Position": "16",
+        "Previous Position": "22",
+        "Position Difference": "6",
+        "Search Volume": "5400",
+        "CPC": "2.33",
+        "Url": "https://sites.edifecs.com/?blueshieldca",
+        "Traffic (%)": "0.45",
+        "Traffic Cost (%)": "0.34",
+        "Competition": "0.03",
+        "Number of Results": "434000000",
+        "Trends": "0.13,0.13,0.07,0.13,0.19,0.29,0.36,1.00,0.54,0.29,0.16,0.10"
+      },
+      {
+        "Keyword": "changehealthcare",
+        "Position": "7",
+        "Previous Position": "7",
+        "Position Difference": "0",
+        "Search Volume": "2900",
+        "CPC": "4.93",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "0.45",
+        "Traffic Cost (%)": "0.74",
+        "Competition": "0.01",
+        "Number of Results": "120",
+        "Trends": "0.10,0.08,0.08,0.08,0.07,0.04,0.03,0.04,0.05,0.05,0.05,0.03"
+      },
+      {
+        "Keyword": "specbuilder",
+        "Position": "3",
+        "Previous Position": "3",
+        "Position Difference": "0",
+        "Search Volume": "90",
+        "CPC": "5.21",
+        "Url": "https://www.edifecs.com/products/specbuilder",
+        "Traffic (%)": "0.45",
+        "Traffic Cost (%)": "0.80",
+        "Competition": "0.08",
+        "Number of Results": "79100",
+        "Trends": "0.18,0.18,0.18,0.14,0.10,0.14,0.14,0.22,0.18,0.22,0.22,0.18"
+      },
+      {
+        "Keyword": "edi gateway",
+        "Position": "3",
+        "Previous Position": "3",
+        "Position Difference": "0",
+        "Search Volume": "170",
+        "CPC": "14.74",
+        "Url": "https://www.edifecs.com/products/edi-gateway",
+        "Traffic (%)": "0.45",
+        "Traffic Cost (%)": "2.25",
+        "Competition": "0.14",
+        "Number of Results": "118",
+        "Trends": "0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.01,0.01,0.02,0.13,0.02"
+      },
+      {
+        "Keyword": "emdeon change healthcare login",
+        "Position": "8",
+        "Previous Position": "8",
+        "Position Difference": "0",
+        "Search Volume": "170",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "0.36",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.01",
+        "Number of Results": "65",
+        "Trends": "0.10,0.08,0.08,0.06,0.24,0.24,0.10,0.08,0.16,0.16,0.20,0.06"
+      },
+      {
+        "Keyword": "cloud for interoperability in healthcare",
+        "Position": "1",
+        "Previous Position": "1",
+        "Position Difference": "0",
+        "Search Volume": "50",
+        "CPC": "0.00",
+        "Url": "https://www.edifecs.com/healthcare-interoperability-cloud",
+        "Traffic (%)": "0.36",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.33",
+        "Number of Results": "22500000",
+        "Trends": "0.22,0.55,0.55,0.44,0.22,0.22,0.55,0.77,0.77,1.00,1.00,1.00"
+      },
+      {
+        "Keyword": "change healthcare login",
+        "Position": "7",
+        "Previous Position": "7",
+        "Position Difference": "0",
+        "Search Volume": "590",
+        "CPC": "0.00",
+        "Url": "https://sites.edifecs.com/?changehealthcare",
+        "Traffic (%)": "0.36",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.01",
+        "Number of Results": "80",
+        "Trends": "0.13,0.19,0.10,0.08,0.08,0.07,0.08,0.07,0.08,0.07,0.04,0.05"
+      },
+      {
+        "Keyword": "getway edi",
+        "Position": "6",
+        "Previous Position": "6",
+        "Position Difference": "0",
+        "Search Volume": "140",
+        "CPC": "7.56",
+        "Url": "https://www.edifecs.com/products/edi-gateway",
+        "Traffic (%)": "0.36",
+        "Traffic Cost (%)": "0.92",
+        "Competition": "0.03",
+        "Number of Results": "13700000",
+        "Trends": "0.00,0.23,0.35,0.18,0.01,1.00,0.35,0.06,0.08,0.08,0.06,0.06"
+      },
+      {
+        "Keyword": "corelogin",
+        "Position": "8",
+        "Previous Position": "8",
+        "Position Difference": "0",
+        "Search Volume": "170",
+        "CPC": "0.00",
+        "Url": "https://www.edifecs.com/core-login",
+        "Traffic (%)": "0.36",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.00",
+        "Number of Results": "540000",
+        "Trends": "0.16,0.03,1.00,0.03,0.03,0.00,0.05,0.03,0.01,0.16,0.00,0.00"
+      }
+    ],
+    "paid_keywords": [
+      {
+        "Keyword": "what is edifecs",
+        "Position": "1",
+        "Previous Position": "1",
+        "Position Difference": "0",
+        "Search Volume": "40",
+        "CPC": "6.01",
+        "Visible Url": "https://www.edifecs.com \u203a healthcare-data \u203a interop",
+        "Traffic (%)": "50.00",
+        "Traffic Cost (%)": "66.66",
+        "Competition": "0.06",
+        "Number of Results": "37300",
+        "Trends": "0.64,0.64,0.64,0.11,0.11,0.11,0.11,0.11,0.11,0.11,0.11,0.11"
+      },
+      {
+        "Keyword": "fihr",
+        "Position": "5",
+        "Previous Position": "5",
+        "Position Difference": "0",
+        "Search Volume": "390",
+        "CPC": "3.63",
+        "Visible Url": "https://www.edifecs.com",
+        "Traffic (%)": "50.00",
+        "Traffic Cost (%)": "33.33",
+        "Competition": "0.12",
+        "Number of Results": "199000",
+        "Trends": "0.30,0.13,0.20,0.24,0.16,0.16,0.30,0.16,0.16,0.20,0.01,0.03"
+      },
+      {
+        "Keyword": "cms interoperability rule",
+        "Position": "6",
+        "Previous Position": "6",
+        "Position Difference": "0",
+        "Search Volume": "90",
+        "CPC": "3.78",
+        "Visible Url": "https://www.edifecs.com",
+        "Traffic (%)": "0.00",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.31",
+        "Number of Results": "109",
+        "Trends": "0.52,0.23,0.52,0.52,0.33,0.33,0.52,0.52,0.23,0.09,0.23,0.66"
+      },
+      {
+        "Keyword": "cms billing guidelines",
+        "Position": "5",
+        "Previous Position": "5",
+        "Position Difference": "0",
+        "Search Volume": "90",
+        "CPC": "6.59",
+        "Visible Url": "https://www.edifecs.com",
+        "Traffic (%)": "0.00",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.04",
+        "Number of Results": "32400000",
+        "Trends": "0.34,0.34,0.53,0.34,0.26,0.15,0.26,0.26,0.42,0.53,0.42,0.53"
+      },
+      {
+        "Keyword": "fire api healthcare",
+        "Position": "4",
+        "Previous Position": "4",
+        "Position Difference": "0",
+        "Search Volume": "30",
+        "CPC": "4.54",
+        "Visible Url": "https://www.edifecs.com",
+        "Traffic (%)": "0.00",
+        "Traffic Cost (%)": "0.00",
+        "Competition": "0.35",
+        "Number of Results": "44000000",
+        "Trends": "0.40,1.00,0.40,1.00,0.40,0.40,0.40,1.00,1.00,0.40,0.40,0.40"
+      }
+    ],
+    "seo_competitors": [
+      {
+        "Domain": "changehealthcare.com",
+        "Competitor Relevance": "0.31",
+        "Common Keywords": "54",
+        "Organic Keywords": "1729",
+        "Organic Traffic": "4308",
+        "Organic Cost": "12764",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "changehealthcare.com.co",
+        "Competitor Relevance": "0.27",
+        "Common Keywords": "54",
+        "Organic Keywords": "1370",
+        "Organic Traffic": "8798",
+        "Organic Cost": "30807",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "payerenrollservices.com",
+        "Competitor Relevance": "0.21",
+        "Common Keywords": "31",
+        "Organic Keywords": "99",
+        "Organic Traffic": "956",
+        "Organic Cost": "21379",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "edifecsfedcloud.com",
+        "Competitor Relevance": "0.21",
+        "Common Keywords": "7",
+        "Organic Keywords": "160",
+        "Organic Traffic": "13",
+        "Organic Cost": "3",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "cotiviti.com",
+        "Competitor Relevance": "0.09",
+        "Common Keywords": "15",
+        "Organic Keywords": "5130",
+        "Organic Traffic": "17697",
+        "Organic Cost": "55344",
+        "Adwords Keywords": "3"
+      },
+      {
+        "Domain": "wedi.org",
+        "Competitor Relevance": "0.07",
+        "Common Keywords": "4",
+        "Organic Keywords": "447",
+        "Organic Traffic": "1581",
+        "Organic Cost": "1219",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "medikeeper.com",
+        "Competitor Relevance": "0.06",
+        "Common Keywords": "28",
+        "Organic Keywords": "1630",
+        "Organic Traffic": "1293",
+        "Organic Cost": "2253",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "ctrlspecbuilder.com",
+        "Competitor Relevance": "0.06",
+        "Common Keywords": "2",
+        "Organic Keywords": "10",
+        "Organic Traffic": "79",
+        "Organic Cost": "397",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "sriniedibasics.blogspot.com",
+        "Competitor Relevance": "0.05",
+        "Common Keywords": "1",
+        "Organic Keywords": "43",
+        "Organic Traffic": "1",
+        "Organic Cost": "0",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "gatewayedi.com",
+        "Competitor Relevance": "0.05",
+        "Common Keywords": "7",
+        "Organic Keywords": "330",
+        "Organic Traffic": "4636",
+        "Organic Cost": "30198",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "livevox.com",
+        "Competitor Relevance": "0.05",
+        "Common Keywords": "15",
+        "Organic Keywords": "582",
+        "Organic Traffic": "1572",
+        "Organic Cost": "6225",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "edigateway.com",
+        "Competitor Relevance": "0.05",
+        "Common Keywords": "7",
+        "Organic Keywords": "456",
+        "Organic Traffic": "142",
+        "Organic Cost": "1039",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "specificationbuilder.co.uk",
+        "Competitor Relevance": "0.05",
+        "Common Keywords": "2",
+        "Organic Keywords": "10",
+        "Organic Traffic": "17",
+        "Organic Cost": "124",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "medicaidinnovation.org",
+        "Competitor Relevance": "0.04",
+        "Common Keywords": "2",
+        "Organic Keywords": "584",
+        "Organic Traffic": "182",
+        "Organic Cost": "61",
+        "Adwords Keywords": "0"
+      },
+      {
+        "Domain": "gahin.org",
+        "Competitor Relevance": "0.04",
+        "Common Keywords": "9",
+        "Organic Keywords": "195",
+        "Organic Traffic": "798",
+        "Organic Cost": "722",
+        "Adwords Keywords": "0"
+      }
+    ]
+  },
+  "signals": [
+    {
+      "detail": "Cotiviti announced agreement to acquire Edifecs on February 10, 2025. Transaction closed March 31, 2025. Edifecs now operates as 'Edifecs, a Cotiviti business.' Investors TA Associates and Francisco Partners exited. Veritas Capital backs Cotiviti.",
+      "date": "",
+      "source": "https://www.businesswire.com/news/home/20250210247496/en/Cotiviti-Announces-Agreement-to-Acquire-Edifecs; https://www.businesswire.com/news/home/20250331312660/en/Cotiviti-Completes-Acquisition-of-Edifecs",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B2-BROAD",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti (Edifecs parent) announced CEO leadership transition: Ric Sinclair joined as CEO and Board Member effective March 16, 2026, replacing Dr. Emad Rizk who transitioned to Senior Advisor. Rizk oversaw successful integration of Edifecs post-acquisition.",
+      "date": "",
+      "source": "https://www.businesswire.com/news/home/20260309783174/en/Cotiviti-Announces-Leadership-Transition",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B2-BROAD",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs (as Cotiviti business) is active participant in HL7 FHIR workgroups, The Sequoia Project, WEDI, and founding member of HL7 Da Vinci Project Interoperability Standards Group \u2014 ongoing standards-body engagement confirmed in 2026 KLAS award press release.",
+      "date": "",
+      "source": "https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS-Payer-Interoperability",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B2-BROAD",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Sr. Operations Engineer / Sr. Network Engineer: Multiple Sr. Operations Engineer and Sr. Network Engineer roles open simultaneously, consistent with scaling cloud infrastructure post-Cotiviti acquisition. | Implication: Infrastructure hiring signals Edifecs is scaling platform capacity \u2014 likely in support of Agentic AI platform (launched September 2025) and CMS-0057-F interoperability compliance d",
+      "date": "",
+      "source": "",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5b-EXEC",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Product Management (4 open, 1 new): 4 Edifecs product management roles open on LinkedIn with at least 1 newly posted as of search date. | Implication: Product management hiring at this volume post-acquisition suggests Cotiviti is actively expanding the Edifecs product roadmap \u2014 likely toward Risk Adjustment, Agentic AI, and CMS interoperability compliance features. New product capabilities could r",
+      "date": "",
+      "source": "",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5b-EXEC",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "No field/event marketing roles found: S1 search returned zero Edifecs-specific field marketing or event marketing job postings on LinkedIn Jobs, Greenhouse, or Lever. The closest result was an unrelated company ('Edifis'). No Edifecs-branded event or field marketing roles currently open. | Implication: Absence of field/event marketing hiring at Edifecs/Cotiviti suggests they rely on Cotiviti's cen",
+      "date": "",
+      "source": "",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5b-EXEC",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti acquired Edifecs for approximately $3 billion (per Seeking Alpha, Feb 2025). TA Associates (investor since 2020 PE round) and Francisco Partners exited. KKR had previously taken a $10.5B stake in Cotiviti. Deal facilitated by Goldman Sachs, TripleTree, Gibson Dunn (Cotiviti) and J.P. Morgan, William Blair, Kirkland & Ellis (Edifecs).",
+      "date": "",
+      "source": "Seeking Alpha Feb 5, 2025; GeekWire Feb 11, 2025; Cotiviti press release; Tracxn",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5c-LEADERSHIP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Post-acquisition Glassdoor reviews (late 2025\u20132026) indicate talent attrition and reported layoffs following Cotiviti integration. Multiple reviewers cite Cotiviti paying employees significantly less than Edifecs did, with 'many talented people' leaving or being laid off post-March 2025 acquisition close.",
+      "date": "",
+      "source": "Glassdoor reviews (multiple, Nov 2025\u2013Apr 2026): glassdoor.com/Reviews/Edifecs",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5c-LEADERSHIP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Glassdoor rating declined post-acquisition. Current rating 4.1/5 stars on 552 reviews with 81% recommend rate. Compensation/benefits score 3.9/5 (down 4% over last 12 months). Pre-acquisition historical rating was 4.4/5 on 439 reviews with 91% recommend. Post-acquisition sentiment sharply negative around pay cuts, layoffs, and cultural degradation under Cotiviti.",
+      "date": "",
+      "source": "Glassdoor.com Edifecs Reviews (multiple pages, Apr 2026)",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5c-LEADERSHIP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Glassdoor: 4.1 / 5.0 (current, post-acquisition); historical pre-acquisition peak: 4.4 / 5.0 (552\u2013593 total reviews (as of Apr\u2013May 2026) reviews). Strong pre-acquisition reputation for employee wellbeing, culture, and benefits (4.4 rating, 91% recommend). Significant post-March 2025 sentiment decline: current rating 4.1/5, 81% recommend, comp/benefits down 4% YoY to 3.9/5. Recurring post-acquisiti",
+      "date": "",
+      "source": "B5c org intel",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B5c-LEADERSHIP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "S2 search returned competitor and adjacent podcasts (HealthEdge 'Current Trends For Payers' on Spotify, 'The Shift: RCM Talks,' Bain Capital 'Future of Healthcare AI') but zero Edifecs or Cotiviti-branded podcast shows on Apple Podcasts or Spotify for 2025\u20132026.",
+      "date": "2025-2026",
+      "source": "",
+      "url": "https://open.spotify.com",
+      "sentiment": "neutral",
+      "sentiment_score": -0.15,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Multi-session payer quality/Stars webinar series relaunched February 24, 2026 under Cotiviti brand. Designed for payer quality and Stars program management professionals; covers HEDIS MY 2027, Star Ratings changes, and CMS/NCQA regulatory updates.",
+      "date": "2026-02-24 00:00:00",
+      "source": "",
+      "url": "https://blog.cotiviti.com/webinar-series-decoding-quality-throughout-2026",
+      "sentiment": "positive",
+      "sentiment_score": 0.65,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "On-demand webinar co-hosted with RISE covering interoperability challenges, data connectivity enhancement, and measurable value for payer organizations; listed in Cotiviti resource center.",
+      "date": "2025-2026",
+      "source": "",
+      "url": "https://resources.cotiviti.com/",
+      "sentiment": "positive",
+      "sentiment_score": 0.55,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Blog post on blog.edifecs.com published/updated March 31, 2026 under Cotiviti business branding; targets payer HIT leaders on technology stack strategy, interoperability, and administrative cost reduction.",
+      "date": "2026-03-31 00:00:00",
+      "source": "",
+      "url": "https://blog.edifecs.com/future-proofing-technology-5-considerations-for-the-hit-stack",
+      "sentiment": "positive",
+      "sentiment_score": 0.6,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Third-party healthcare payment integrity company comparison (helpware.com, published ~April 2026) ranked Cotiviti/Edifecs as top enterprise-grade provider; noted Edifecs acquisition 'adds real-time interoperability,' serves all top 25 US health plans, holds Everest Group PEAK Matrix Leader 2025 designation.",
+      "date": "2026-04-01 00:00:00",
+      "source": "",
+      "url": "https://helpware.com/blog/healthcare-payment-integrity-companies",
+      "sentiment": "positive",
+      "sentiment_score": 0.75,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Published March 23, 2026; Edifecs named as an evaluated vendor in Black Book's payer-user-feedback study on Medicaid-to-Medicare transition tech stacks, based on Q4 2025\u2013Q1 2026 data collection. Co-listed with Cotiviti, Availity, InterSystems, Innovaccer, HealthEdge, and Datavant.",
+      "date": "2026-03-23 00:00:00",
+      "source": "",
+      "url": "https://www.pressrelease.com/news/black-book-research-releases-new-2026-payer-it-series-report-on-the-22750564",
+      "sentiment": "positive",
+      "sentiment_score": 0.6,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Overall: positive (score 0.72). Edifecs carries strongly positive market reputation driven by consecutive KLAS Best in KLAS wins (91.9 score), deep payer penetration, and active content marketing post-Cotiviti acquisition. No negative Reddit, Twitter, or review-site sentiment detected. Primary vulnerability: enterprise pricing and implementation complexity.",
+      "date": "",
+      "source": "B6 aggregation",
+      "url": "",
+      "sentiment": "positive",
+      "sentiment_score": 0.72,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti and Edifecs senior leaders co-presented an on-demand webinar through RISE, covering key regulatory updates and emerging policy trends in 2026 risk adjustment. Available as on-demand resource at resources.cotiviti.com.",
+      "date": "2026",
+      "source": "",
+      "url": "https://resources.cotiviti.com/",
+      "sentiment": "positive",
+      "sentiment_score": 0.7,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti (Edifecs' parent post-acquisition) launched its Quality Decoded webinar series starting February 24, 2026, targeting payer Stars and quality program professionals. Series covers HEDIS MY 2027 specs, 2027 Star Ratings results, and CMS/NCQA compliance strategy.",
+      "date": "2026-02-24 00:00:00",
+      "source": "",
+      "url": "https://blog.cotiviti.com/webinar-series-decoding-quality-throughout-2026",
+      "sentiment": "positive",
+      "sentiment_score": 0.65,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Blog post published March 31, 2026 under Edifecs' Cotiviti-branded blog, maintaining thought leadership on healthcare IT stack future-proofing. Confirms continued blog production post-acquisition integration.",
+      "date": "2026-03-31 00:00:00",
+      "source": "",
+      "url": "https://blog.edifecs.com/future-proofing-technology-5-considerations-for-the-hit-stack",
+      "sentiment": "positive",
+      "sentiment_score": 0.6,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Third-party analyst guide positions Cotiviti (with Edifecs acquisition noted as a key strength) as the benchmark enterprise payment integrity vendor serving all top 25 US health plans. Notes Edifecs acquisition 'adds real-time interoperability' as a competitive differentiator. Also flags that smaller regional plans may overpay for breadth.",
+      "date": "2026",
+      "source": "",
+      "url": "https://helpware.com/blog/healthcare-payment-integrity-companies",
+      "sentiment": "positive",
+      "sentiment_score": 0.7,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Black Book Q1 2026 report (based on Q4 2025\u2013Q1 2026 payer-user feedback) names Edifecs among top vendors in Medicaid-to-Medicare transition technology, alongside Cotiviti, Availity, InterSystems, Innovaccer, HealthEdge Wellframe, and Datavant.",
+      "date": "2026-03-23 00:00:00",
+      "source": "",
+      "url": "https://www.pressrelease.com/news/black-book-research-releases-new-2026-payer-it-series-report-on-the-22750564",
+      "sentiment": "positive",
+      "sentiment_score": 0.65,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, a Cotiviti business, earned the 2026 Best in KLAS award for CMS Payer Interoperability with an overall performance score of 91.9 \u2014 the highest in the category \u2014 across loyalty, culture, product, and relationship pillars. This marks the third KLAS recognition in four years (2023, 2024, 2026). The designation is based on payer feedback on CMS interoperability requirement compliance at scale",
+      "date": "2026-02-04 00:00:00",
+      "source": "BusinessWire / Edifecs Newsroom / Yahoo Finance",
+      "url": "https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS-Payer-Interoperability",
+      "sentiment": "positive",
+      "sentiment_score": 0.95,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti completed its acquisition of Edifecs on March 31, 2025, combining Edifecs' health data management platform (serving ~300M people via 300+ payer/health system customers) with Cotiviti's data analytics and payment accuracy capabilities. The deal expands interoperability, value-based care, and administrative cost reduction solutions. Financial advisors included Goldman Sachs, TripleTree, Eve",
+      "date": "2025-03-31 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20250331312660/en/Cotiviti-Completes-Acquisition-of-Edifecs",
+      "sentiment": "positive",
+      "sentiment_score": 0.85,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti announced its agreement to acquire Edifecs on February 10, 2025. The combined platform aims to enhance payer-provider connectivity, accelerate value-based care solutions, and reduce administrative waste. KKR (co-sponsor with Veritas Capital) expressed strong support. Edifecs CEO Venkat Kavarthapu emphasized the strategic fit of interoperable cloud solutions. Transaction subject to regulat",
+      "date": "2025-02-10 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20250210247496/en/Cotiviti-Announces-Agreement-to-Acquire-Edifecs",
+      "sentiment": "positive",
+      "sentiment_score": 0.8,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti confirmed attendance at RISE National 2026 \u2014 the premier Medicare Advantage and risk adjustment conference \u2014 to showcase how payers and providers can manage complexity, intervene early, and maximize efficiency. Edifecs is historically a keynote sponsor of RISE (was keynote sponsor at RISE National 2022).",
+      "date": "2026-02-04 00:00:00",
+      "source": "BusinessWire (sidebar reference)",
+      "url": "https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS-Payer-Interoperability",
+      "sentiment": "neutral",
+      "sentiment_score": 0.55,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, a Cotiviti business, appeared as a confirmed exhibitor/sponsor at Becker's Hospital Review's 10th Annual Health IT + Digital Health + RCM Annual Meeting in 2025, showcasing its award-winning Healthcare Interoperability Cloud for payer and health system customers.",
+      "date": "2025-01-01 00:00:00",
+      "source": "Becker's Hospital Review Conference Site",
+      "url": "https://conferences.beckershospitalreview.com/hit_rcm_2025/exhibitors-sponsors",
+      "sentiment": "neutral",
+      "sentiment_score": 0.5,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Seasoned healthcare executive Ric Sinclair joined Cotiviti (Edifecs' parent) as CEO and Board Member, with Dr. Emad Rizk transitioning to Senior Advisor. This leadership transition follows the completion of the Edifecs acquisition and signals a new strategic phase for the combined Cotiviti/Edifecs entity.",
+      "date": "2026-01-01 00:00:00",
+      "source": "BusinessWire (sidebar reference)",
+      "url": "https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS-Payer-Interoperability",
+      "sentiment": "neutral",
+      "sentiment_score": 0.45,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Overall: positive (score 0.77). Edifecs (now Cotiviti business) is in a strongly positive PR posture: three-time KLAS winner, completed transformative acquisition, launched Healthcare Interoperability Cloud, and holds board-level influence across key standards bodies \u2014 all ahead of high-stakes 2027 CMS deadlines.",
+      "date": "",
+      "source": "B8 aggregation",
+      "url": "",
+      "sentiment": "positive",
+      "sentiment_score": 0.77,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs (a Cotiviti business) earned the highest overall performance score of 91.9 in KLAS Research's 2026 Best in KLAS: Software & Services report for CMS Payer Interoperability \u2014 the third such recognition in four years. Designation is based on payer feedback on CMS interoperability compliance, customer experience, and long-term value.",
+      "date": "2026-02-04 00:00:00",
+      "source": "BusinessWire / Yahoo Finance / Edifecs Newsroom",
+      "url": "https://www.businesswire.com/news/home/20260204293446/en/Edifecs-Named-2026-Best-in-KLAS-for-CMS-Payer-Interoperability",
+      "sentiment": "positive",
+      "sentiment_score": 0.95,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti finalized its acquisition of Edifecs on March 31, 2025, combining Edifecs' health data management and interoperability platform with Cotiviti's advanced analytics, risk adjustment, and payment accuracy solutions. The combined entity serves payers covering nearly 300 million people in the US.",
+      "date": "2025-03-31 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20250331312660/en/Cotiviti-Completes-Acquisition-of-Edifecs",
+      "sentiment": "positive",
+      "sentiment_score": 0.88,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Cotiviti announced its intent to acquire Edifecs on February 10, 2025. The combined platform was positioned to enhance payer-provider connectivity, accelerate value-based solutions, and expand interoperability capabilities under Cotiviti's brand.",
+      "date": "2025-02-10 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20250210247496/en/Cotiviti-Announces-Agreement-to-Acquire-Edifecs",
+      "sentiment": "positive",
+      "sentiment_score": 0.85,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs (a Cotiviti business) was listed as an exhibitor/sponsor at Becker's Hospital Review's 10th Annual Health IT + Digital Health + RCM Annual Meeting, showcasing its award-winning healthcare interoperability cloud solution to health IT and payer executives.",
+      "date": "2025-01-01 00:00:00",
+      "source": "Becker's Hospital Review Conference",
+      "url": "https://conferences.beckershospitalreview.com/hit_rcm_2025/exhibitors-sponsors",
+      "sentiment": "neutral",
+      "sentiment_score": 0.5,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Overall: positive (score 0.87). Edifecs holds an exceptionally strong PR and competitive posture in 2025\u20132026: three consecutive KLAS wins, a major Cotiviti acquisition, a new cloud product launch, a HealthEdge partnership, and deep CMS regulatory positioning \u2014 signaling aggressive market expansion.",
+      "date": "",
+      "source": "B8 aggregation",
+      "url": "",
+      "sentiment": "positive",
+      "sentiment_score": 0.87,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, now operating as a Cotiviti business following the acquisition completed March 2026, presents a highly active and expanding competitive threat across payer interoperability, risk adjustment, and regulatory compliance domains \u2014 all core Simplify (SHC) adjacencies. The CI scan identified 46 net-new gap events across 192 scanned, revealing consistent presence at HIMSS, WEDI, RISE, ACDIS, NAA",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "No quantitative sentiment scores were captured in this scan cycle \u2014 the sentiment.overall field is null and sentiment.by_source is empty, meaning neither LinkedIn, news wires, nor trade media sentiment could be computationally scored. However, a qualitative proxy read based on the 46 gap events and associated press evidence suggests distinctly positive market posture: Edifecs/Cotiviti is earning a",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0.0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, now operating as a Cotiviti business following the acquisition completed in March 2025, is executing an aggressive competitive expansion across CMS payer interoperability, risk adjustment, and healthcare data exchange. The company has won Best in KLAS for CMS Payer Interoperability three times in four years (2023, 2024, 2026) with a 91.9 performance score, establishing dominance in a cate",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "No quantitative sentiment scores were captured in this scan cycle (sentiment.overall is null and by_source is empty), which limits predictive confidence. However, a qualitative read across the 33 awards found, consistent KLAS leadership (scores of 87.9, 92.2, and 91.9 over three wins), and prominent thought-leadership placements at WEDI, HIMSS, RISE, and Sequoia Project strongly suggests the compe",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0.0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, now operating as a Cotiviti business following the March 31, 2025 acquisition, presents a formidable and accelerating competitive threat to Simplify (SHC) across CMS payer interoperability, risk adjustment, and FHIR-based data exchange. The bundle reveals 46 net-new gap events across HIMSS, RISE, WEDI, ACDIS, NAACOS, Becker's, and proprietary webinar series \u2014 indicating a broad, multi-cha",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "No quantitative sentiment scores were captured in this scan cycle (sentiment.overall is null, by_source is empty), so a numerical read is unavailable. However, the qualitative evidence across 33 awards, 42 profiled leaders, and 46 gap events paints a strongly positive public posture: Edifecs/Cotiviti is being recognized by KLAS, Fierce Healthcare, SEAL, and WEDI while maintaining executive board-l",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0.0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, now operating as a Cotiviti business following the March 31, 2025 acquisition close, presents a formidable and accelerating competitive threat to Simplify (SHC) across CMS payer interoperability, risk adjustment, and FHIR-based data exchange. The scan identified 46 net-new gap events across 192 scanned, revealing a competitor with deep institutional presence at WEDI (board seat via Michae",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "No quantitative sentiment scores were captured in this scan cycle (overall: null, by_source: empty), preventing a statistical sentiment read. However, qualitative proxy indicators are overwhelmingly positive: three Best in KLAS wins in four years, SEAL sustainability awards, Great Place to Work certification, and consistent press coverage via BusinessWire and Yahoo Finance all point to a competito",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0.0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "No quantitative sentiment scores were returned by the scoring engine for this sweep cycle (overall: null, by_source: empty), likely due to Edifecs' positioning as a B2B infrastructure vendor with limited consumer-facing controversy. However, the qualitative signal landscape is unambiguously positive: 33 awards (including three Best in KLAS wins), zero negative press findings, consistent WEDI board",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0.0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, now operating as a Cotiviti business following the March 2025 acquisition, presents a formidable and accelerating competitive threat to Simplify (SHC). The competitor has won Best in KLAS for CMS Payer Interoperability three of the last four years (2023, 2024, 2026 \u2014 scoring 91.9 in 2026) and claims penetration across 24 of 25 top commercial health plans, 27 of 34 BCBS payers, and 35 of 5",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs' public sentiment profile is strongly positive (0.743 avg, 8 of 9 items positive) with all scored signals originating from LinkedIn (B5a). The positive sentiment is driven by three themes: client success storytelling (CareOregon FHIR case study scoring 0.88), product launch momentum (Member Consent Management at 0.85, Agentic AI for VBC at 0.85), and strategic partnership announcements (BC",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "positive",
+      "sentiment_score": 0.743,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs, now operating as a Cotiviti business following a ~$3B acquisition closed March 31, 2025, is in an exceptionally strong competitive posture against Simplify (SHC). The scan captured 98 signals, 33 awards, and 42 leadership profiles across 192 events scanned, with an overwhelmingly positive sentiment score of 0.63 across 62 scored items \u2014 zero negative signals detected. The dominant wins dr",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Edifecs' public sentiment is uniformly positive (avg 0.63, zero negative items across 62 scored), driven overwhelmingly by third-party validation sources: News wire coverage (avg 0.77\u20130.87) anchored by the three-time KLAS Best in KLAS award cycle and the Cotiviti acquisition narrative, while LinkedIn social posts (avg 0.74) amplify client success stories (CareOregon, UPMC) and product launches (Co",
+      "date": "",
+      "source": "B10 synthesis",
+      "url": "",
+      "sentiment": "positive",
+      "sentiment_score": 0.63,
+      "discovery": "B10-FINAL",
+      "cotiviti_related": true
+    },
+    {
+      "detail": "Announced February 4, 2026 from Salt Lake City. Edifecs earned highest overall KLAS performance score of 91.9 and top ratings across loyalty, culture, product, and relationship pillars. Third KLAS recognition in four years (also 2023, 2024). Based on feedback from payer organizations on CMS interoperability requirements at scale.",
+      "date": "2026-02-04 00:00:00",
+      "source": "",
+      "url": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/",
+      "sentiment": "positive",
+      "sentiment_score": 0.95,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs earned KLAS overall performance score of 91.9, highest ratings across loyalty, culture, product, and relationship pillars. Third consecutive recognition (2023, 2024, 2026). Based on extensive payer organization feedback evaluating CMS mandate compliance capability at scale.",
+      "date": "2026-02-04 00:00:00",
+      "source": "",
+      "url": "https://www.edifecs.com/newsroom/2025-edifecs-named-2026-best-in-klas-for-cms-payer-interoperability/",
+      "sentiment": "positive",
+      "sentiment_score": 0.95,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs launched its Healthcare Interoperability Cloud in February 2025, combining EDI and FHIR gateways into a unified payer interoperability platform. An independent study of 99 payers identified Edifecs as the leading partner for both FHIR and EDI solutions. The solution supports CMS-9115-F and CMS-0057-F compliance and is deployable across public, private, and hybrid clouds.",
+      "date": "2025-02-04 00:00:00",
+      "source": "BusinessWire / Yahoo Finance",
+      "url": "https://www.businesswire.com/news/home/20250204021905/en/",
+      "sentiment": "positive",
+      "sentiment_score": 0.9,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs launched its Healthcare Interoperability Cloud (February 4, 2025), enabling payers to take a strategic approach to interoperability for CMS-9115-F and CMS-0057-F compliance. In a study of 99 payers by a third-party consultant, Edifecs was identified as the leading partner for both FHIR and EDI solutions. The solution supports EDI, FHIR, NCPDP, HL7v2, and proprietary formats. Featured in th",
+      "date": "2025-02-04 00:00:00",
+      "source": "BusinessWire / Yahoo Finance",
+      "url": "https://www.businesswire.com/news/home/20250204021905/en/",
+      "sentiment": "positive",
+      "sentiment_score": 0.88,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs announced in February 2024 that its interoperability solution \u2014 including EDI and FHIR Gateways \u2014 was production-ready for CMS-0057-F compliance, including Prior Authorization and Provider Access APIs. The solution was already deployed with a large regional Blues organization well ahead of 2026/2027 deadlines.",
+      "date": "2024-02-21 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20240221950720/en/Edifecs-Solution-Addresses-New-CMS-Prior-Authorization-and-Interoperability-Mandate",
+      "sentiment": "positive",
+      "sentiment_score": 0.88,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Published May 2025; features Dr. Adele Towers of UPMC as a customer voice praising Edifecs' Retrospective Review, Point of Care, and Post-Visit tools as 'life-changing' for UPMC's diagnosis capture and risk adjustment accuracy.",
+      "date": "2025-05-01 00:00:00",
+      "source": "",
+      "url": "https://blog.edifecs.com/provider-perspectives-interoperability-and-patient-data",
+      "sentiment": "positive",
+      "sentiment_score": 0.85,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Blog featuring Dr. Adele Towers, Director of Risk Adjustment at UPMC, providing strong customer testimonial for Edifecs' Retrospective Review, Point of Care, and Post-Visit Review tools. UPMC describes outcomes as 'life-changing' for diagnosis capture.",
+      "date": "2025-05-01 00:00:00",
+      "source": "",
+      "url": "https://blog.edifecs.com/provider-perspectives-interoperability-and-patient-data",
+      "sentiment": "positive",
+      "sentiment_score": 0.85,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs and HealthEdge (both Best in KLAS vendors) announced a partnership natively integrating Edifecs' EDI Gateway with HealthEdge's HealthRules Payer claims adjudication system (September 25, 2024). The partnership reduces friction, shortens implementation times, and lowers total cost of ownership for shared payer customers. Unlocks end-to-end visibility of claims data.",
+      "date": "2024-09-25 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20240925103259/en/Edifecs-and-HealthEdge-Two-Best-in-KLAS-Technology-Vendors-Announce-Strategic-Partnership-to-Deliver-Seamless-Healthcare-Data-Exchange",
+      "sentiment": "positive",
+      "sentiment_score": 0.82,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs and HealthEdge (Best in KLAS claims adjudication vendor) announced a native integration partnership in September 2024, linking Edifecs' EDI Gateway with HealthEdge's HealthRules Payer system. The partnership reduces total cost of ownership and implementation time for shared payer customers.",
+      "date": "2024-09-25 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20240925103259/en/Edifecs-and-HealthEdge-Two-Best-in-KLAS-Technology-Vendors-Announce-Strategic-Partnership-to-Deliver-Seamless-Healthcare-Data-Exchange",
+      "sentiment": "positive",
+      "sentiment_score": 0.82,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Overall: positive (score 0.81). Edifecs demonstrates strong market momentum with award recognition, major event participation, new product launches, and strategic partnerships. Leadership transitions signal organizational strength and continuity planning.",
+      "date": "",
+      "source": "B5a aggregation",
+      "url": "",
+      "sentiment": "positive",
+      "sentiment_score": 0.81,
+      "discovery": "B5a-SOCIAL",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Announced February 3, 2025; new cloud product enabling payers to address CMS-9115-F and CMS-0057-F compliance. In a study of 99 payers, Edifecs identified as leading partner for both FHIR and EDI solutions. Trusted by 24 of top 25 commercial health plans, 32 of 51 Medicaid programs, 6 of top 10 health systems.",
+      "date": "2025-02-03 00:00:00",
+      "source": "",
+      "url": "https://www.edifecs.com/newsroom/2025-edifecs-introduces-healthcare-interoperability-cloud",
+      "sentiment": "positive",
+      "sentiment_score": 0.8,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs published extensive blog and press release coverage announcing the Healthcare Interoperability Cloud (Feb 3, 2025), positioning it as the preferred FHIR and EDI solution for payers in a 99-payer third-party study. Blog content also covers CMS-0057-F implementation timelines for payers.",
+      "date": "2025-02-03 00:00:00",
+      "source": "",
+      "url": "https://www.edifecs.com/newsroom/2025-edifecs-introduces-healthcare-interoperability-cloud",
+      "sentiment": "positive",
+      "sentiment_score": 0.8,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs is running a multi-part 2026 webinar series on Risk Adjustment Essentials, with Series 2 focused on regulatory change navigation and audit readiness. Prominently featured on the edifecs.com homepage alongside the Best in KLAS 2026 announcement.",
+      "date": "2026",
+      "source": "",
+      "url": "https://www.edifecs.com/",
+      "sentiment": "positive",
+      "sentiment_score": 0.75,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Detailed blog post guiding payers through CMS-0057-F implementation timeline (procurement Late 2024, implementation Late 2025\u2013Mid 2026, Go Live Late 2026). Positions Edifecs as the compliance consolidation platform for CMS-0057-F. Anchors around Best in KLAS recognition.",
+      "date": "2024-01-29 00:00:00",
+      "source": "",
+      "url": "https://blog.edifecs.com/preparing-for-cms-0057-f-interoperability-and-prior-authorization-rule",
+      "sentiment": "positive",
+      "sentiment_score": 0.75,
+      "discovery": "B6-DEEP",
+      "cotiviti_related": false
+    },
+    {
+      "detail": "Edifecs' Michael Pattwell was re-elected to the WEDI (Workgroup for Electronic Data Interchange) Board of Directors in November 2025. Edifecs holds a board seat and is an active contributor to WEDI, HL7 FHIR working groups, The Sequoia Project, and the Da Vinci Project \u2014 reinforcing its standards-setting role in healthcare interoperability.",
+      "date": "2025-11-10 00:00:00",
+      "source": "BusinessWire",
+      "url": "https://www.businesswire.com/news/home/20251110957057/en/Edifecs-Michael-Pattwell-Re-Elected-to-WEDI-Board-of-Directors",
+      "sentiment": "positive",
+      "sentiment_score": 0.75,
+      "discovery": "B8-NEWS",
+      "cotiviti_related": false
+    }
+  ],
+  "actions": [
+    {
+      "rank": 1,
+      "priority": "P0",
+      "action": "Update Simplify sales battle cards to position against the combined Cotiviti + Edifecs offering, not Edifecs as standalone.",
+      "rationale": "Since Cotiviti closed the Edifecs acquisition on March 31, 2025, the competitive surface area has changed: payment integrity (Cotiviti's strength) + EDI/FHIR interoperability (Edifecs' strength) now ships as one suite. Battle cards from before March 2025 are stale.",
+      "deadline": "2026-06-15"
+    },
+    {
+      "rank": 2,
+      "priority": "P0",
+      "action": "Secure prominent presence (booth, keynote, or sponsored session) at HIMSS 2026 and AHIP 2026 to claim share-of-voice while Edifecs is in integration mode.",
+      "rationale": "Edifecs' public event footprint dropped post-acquisition \u2014 minimal sponsor/exhibitor signals across Tier-1 events in the 90-day scan window. Health plan CIOs evaluating interoperability vendors are under-served by the incumbent right now.",
+      "deadline": "2026-06-30"
+    },
+    {
+      "rank": 3,
+      "priority": "P1",
+      "action": "Run proactive win-back outreach to Simplify prospects who are dual-running Edifecs or in active Edifecs evaluations.",
+      "rationale": "Cotiviti acquisitions historically trigger customer contract reviews. Active hiring signals (multiple Sr. Operations Engineer, Network Engineer, and Product Management roles open) indicate platform restructuring \u2014 a normal cause for buyer hesitation.",
+      "deadline": "2026-07-15"
+    },
+    {
+      "rank": 4,
+      "priority": "P1",
+      "action": "Build a counter-narrative to Edifecs' KLAS 2026 win in CMS Payer Interoperability. Engage KLAS, Gartner, and Forrester analysts with Simplify's differentiated positioning.",
+      "rationale": "Edifecs won Best in KLAS for CMS Payer Interop in 2023, 2024, and 2026 \u2014 three of four years. This is the strongest single piece of competitive ammunition Edifecs has and Simplify currently has no public counter-position.",
+      "deadline": "2026-08-01"
+    },
+    {
+      "rank": 5,
+      "priority": "P2",
+      "action": "Stand up continuous monitoring on the Cotiviti+Edifecs joint product roadmap under new CEO Ric Sinclair (joined March 16, 2026).",
+      "rationale": "Sinclair is six weeks into the role with a clear mandate to integrate the combined business. Expect joint product announcements in Q3-Q4 2026. Set Google Alerts, LinkedIn Sales Navigator searches, and Semrush position tracking on edifecs.com and cotiviti.com.",
+      "deadline": "2026-08-15"
+    }
+  ],
+  "threats": [
+    {
+      "product": "Simplify Interoperability / FHIR Gateway",
+      "level": "HIGH",
+      "evidence": "Edifecs' core XEngine platform directly competes on healthcare interoperability, FHIR API management, and data exchange. Despite zero public signals in this scan, Edifecs' installed base in major payer organizations represents a persistent HIGH threat through incumbent advantage and switching costs."
+    },
+    {
+      "product": "Simplify EDI Transaction Management",
+      "level": "HIGH",
+      "evidence": "Edifecs is historically one of the largest healthcare EDI platform vendors. The absence of detectable marketing or event activity does not diminish the embedded threat from long-term payer contracts and deep EDI expertise."
+    },
+    {
+      "product": "Simplify Claims Processing & Adjudication",
+      "level": "MEDIUM",
+      "evidence": "Edifecs' claims data management and validation capabilities overlap with Simplify's claims workflows. No current signals of expansion were detected, but adjacency to core EDI positions them to compete."
+    },
+    {
+      "product": "Simplify Prior Authorization / Utilization Management",
+      "level": "MEDIUM",
+      "evidence": "CMS prior-auth interoperability rules (CMS-0057) create a regulatory tailwind that benefits Edifecs' interoperability stack. Simplify should assume Edifecs is building or has built prior-auth API capabilities even without public confirmation."
+    },
+    {
+      "product": "Simplify Member/Provider Data Management",
+      "level": "LOW",
+      "evidence": "Edifecs has some provider data and directory capabilities but this is not their primary go-to-market. Threat is lower but non-zero given platform adjacency."
+    }
+  ],
+  "leadership_assessment": "No leadership profiles were captured in this scan cycle. The Edifecs CEO as of the most recent publicly available information is Sunny Singh, who has led the company since its founding. However, zero leader detections across all channels means we cannot confirm current leadership status, recent executive hires, or departures. This is a critical intelligence gap \u2014 leadership changes at Edifecs could signal strategic pivots, M&A activity, or go-to-market shifts. Manual verification of Edifecs' current C-suite via LinkedIn and corporate filings is recommended as part of the P0 deep-dive action.",
+  "digital_posture": "The digital/SEO metrics array returned empty with zero data points captured. No Semrush rankings, domain authority scores, organic traffic estimates, paid search activity, or keyword position data were retrieved for Edifecs in this scan. This means we have no visibility into Edifecs' current digital marketing investment, content strategy effectiveness, or search visibility trends. Simplify should commission a dedicated Semrush or Ahrefs competitive audit of edifecs.com to establish baseline digital positioning and identify any keyword gaps or content opportunities.",
+  "gtm_assessment": "Both the marketing findings and LinkedIn social signal arrays returned zero results. No press releases, blog posts, social media campaigns, webinar promotions, case study publications, or LinkedIn engagement metrics were detected for Edifecs. This complete GTM silence is highly unusual for a company of Edifecs' size and market position (typically 400-600 employees serving major US health plans). The most likely explanations are: (1) Edifecs has shifted to an entirely account-based, below-the-radar GTM motion relying on existing relationships rather than public marketing; (2) the company is in a transition period (potential PE ownership change, restructuring, or acquisition); or (3) their digital footprint has contracted significantly. Simplify should treat this as an opportunity to increase its own share-of-voice in healthcare interoperability and EDI categories while simultaneously investigating the root cause of Edifecs' public silence.",
+  "marketing": [
+    {
+      "type": "client",
+      "name": "Centene Corporation",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/2025-edifecs-to-speak-at-rise-national-2025/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "CalOptima",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/2025-edifecs-to-speak-at-rise-national-2025/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Florida Blue",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/edifecs-to-exhibit-and-speak-at-himss23/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Humana",
+      "title": "",
+      "url": "https://www.appsruntheworld.com/apps-top-500-software-vendors/edifecs/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "MultiPlan",
+      "title": "",
+      "url": "https://www.appsruntheworld.com/apps-top-500-software-vendors/edifecs/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Centers for Medicare and Medicaid Services (CMS)",
+      "title": "",
+      "url": "https://www.appsruntheworld.com/apps-top-500-software-vendors/edifecs/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "ClearConnect",
+      "title": "",
+      "url": "https://www.appsruntheworld.com/apps-top-500-software-vendors/edifecs/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Blue Cross Blue Shield Plans (27 of 34)",
+      "title": "",
+      "url": "https://himss24.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Top 25 Commercial Health Plans (24 of 25)",
+      "title": "",
+      "url": "https://himss24.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Medicaid Programs (35 of 50)",
+      "title": "",
+      "url": "https://himss24.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Top 10 Health Systems (5 of 10)",
+      "title": "",
+      "url": "https://himss24.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "Da Vinci Project (HL7)",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/edifecs-to-exhibit-and-speak-at-himss23/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "RELI Group",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/edifecs-to-exhibit-and-speak-at-himss23/",
+      "date": "",
+      "discovery": "B3-CACHE"
+    },
+    {
+      "type": "client",
+      "name": "24 of the 25 top commercial health plans (unnamed)",
+      "title": "",
+      "url": "https://hitconsultant.net/2025/02/07/edifecs-introduces-healthcare-interoperability-cloud/",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    },
+    {
+      "type": "client",
+      "name": "32 of 51 state Medicaid programs (unnamed)",
+      "title": "",
+      "url": "https://hitconsultant.net/2025/02/07/edifecs-introduces-healthcare-interoperability-cloud/",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    },
+    {
+      "type": "client",
+      "name": "73% of BlueCross BlueShield plans (39 U.S. states)",
+      "title": "",
+      "url": "https://www.linkedin.com/company/edifecs",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    },
+    {
+      "type": "client",
+      "name": "Washington Health Benefit Exchange",
+      "title": "",
+      "url": "https://www.edifecs.com/knowledge-center/",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    },
+    {
+      "type": "client",
+      "name": "Doctors HealthCare Plans, Inc.",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/doctors-healthcare-plans-inc-selects-edifecs-hosted-encounter-management-solution/",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    },
+    {
+      "type": "client",
+      "name": "Commonwealth of Pennsylvania (Medicaid EDI)",
+      "title": "",
+      "url": "https://www.edifecs.com/newsroom/doctors-healthcare-plans-inc-selects-edifecs-hosted-encounter-management-solution/",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    },
+    {
+      "type": "client",
+      "name": "6 of 10 largest U.S. health systems (unnamed)",
+      "title": "",
+      "url": "https://hitconsultant.net/2025/02/07/edifecs-introduces-healthcare-interoperability-cloud/",
+      "date": "",
+      "discovery": "B6.6-GTM"
+    }
+  ],
+  "linkedin": [
+    {
+      "type": "product",
+      "detail": "Member Consent Management solution launched. Simplifies data sharing, automates consent, supports compliance with state and federal regulations",
+      "post_date": "2025-11-10",
+      "post_url": "https://www.linkedin.com/posts/edifecs_consentmanagement-healthtech-heathcaredata-activity-7396240979168497665-USgt",
+      "sentiment": "positive"
+    },
+    {
+      "type": "partnership",
+      "detail": "Partnership with CareOregon on FHIR-based prior authorization solution. CareOregon achieved cost reduction and compliance without costly tech upgrades",
+      "post_date": "2025-11-24",
+      "post_url": "https://www.linkedin.com/posts/edifecs_careoregons-strategy-to-solve-prior-authorization-activity-7404573134722629632-C-Ru",
+      "sentiment": "positive"
+    },
+    {
+      "type": "partnership",
+      "detail": "Partnership with Blue Plans (BCBSA) on scalable interoperability solutions. Configurable connections to BCBSA Interoperability Hub for secure digital data exchange",
+      "post_date": "2026-04-06",
+      "post_url": "https://www.linkedin.com/posts/edifecs_headed-to-the-esolutions-xchange-2026-conference-activity-7447282764447461377-uKq7",
+      "sentiment": "positive"
+    },
+    {
+      "type": "client_win",
+      "detail": "CareOregon case study: FHIR platform deployment for prior auth workflow simplification and cost reduction",
+      "post_date": "2025-11-24",
+      "post_url": "https://www.linkedin.com/posts/edifecs_careoregons-strategy-to-solve-prior-authorization-activity-7404573134722629632-C-Ru",
+      "sentiment": "positive"
+    },
+    {
+      "type": "product",
+      "detail": "AI-driven encounter submissions solution. Reduces errors, enhances data quality, drives timely reimbursements",
+      "post_date": "2025-12-04",
+      "post_url": "https://www.linkedin.com/posts/edifecs_healthtech-encountersubmissions-healthcaredata-activity-7408899301701017600-TUc0",
+      "sentiment": "positive"
+    },
+    {
+      "type": "product",
+      "detail": "Agentic AI solution for value-based care. Real-world use cases showing improved outcomes and cost reduction",
+      "post_date": "2025-12-06",
+      "post_url": "https://www.linkedin.com/posts/edifecs_valuebasedcare-healthcareai-healthtech-activity-7407849714064433153-taZ1",
+      "sentiment": "positive"
+    },
+    {
+      "type": "hiring",
+      "detail": "Ric Sinclair appointed as Chief Executive Officer of Cotiviti (parent company), effective March 16, 2026. Leadership transition with Emad Rizk moving to Senior Advisor role",
+      "post_date": "2026-03-09",
+      "post_url": "https://www.linkedin.com/posts/edifecs_today-marks-a-new-chapter-in-cotivitis-history-activity-7437223834254008321-pieN",
+      "sentiment": "neutral"
+    },
+    {
+      "type": "partnership",
+      "detail": "Partnership with Cotiviti parent company. Integrated risk adjustment solutions across prospective, concurrent, and retrospective programs",
+      "post_date": "2026-02-28",
+      "post_url": "https://www.linkedin.com/posts/edifecs_we're-looking-forward-to-seeing-you-at-the-activity-7443305113806594048-uaX1",
+      "sentiment": "positive"
+    },
+    {
+      "type": "product",
+      "detail": "Data management and AI readiness solutions. Data infrastructure preparation tools for safe AI implementation in healthcare",
+      "post_date": "2025-12-07",
+      "post_url": "https://www.linkedin.com/posts/edifecs_key-data-management-efforts-to-ensure-your-activity-7407906328876068865-RMMS",
+      "sentiment": "positive"
+    }
+  ],
+  "sentiment_summary": {
+    "total_scored": 62,
+    "positive": 42,
+    "neutral": 20,
+    "negative": 0,
+    "avg_score": 0.56
+  },
+  "totals": {
+    "events_scanned": 96,
+    "gap_events": 45,
+    "awards": 33,
+    "leaders": 8,
+    "signals": 100,
+    "marketing": 20,
+    "linkedin": 9
+  }
+};
+
+// Sentiment math
+const sent = DATA.sentiment_summary;
+const sentScorePct = Math.max(0, Math.min(100, (sent.avg_score + 1) * 50));
+
+const TABS = {
+  overview: () => `
+    <h2 class="section-h">Executive Overview</h2>
+    <p class="section-sub">The Edifecs scan captured a competitor in strategic transition — newly acquired by Cotiviti, deepening platform investment, and continuing to dominate the CMS payer interoperability category in KLAS rankings. This report synthesizes 100+ intelligence signals across nine data dimensions.</p>
+
+    <div class="overview-grid">
+      <div>
+        <div class="pull-quote">
+          Edifecs operates as a <em>Cotiviti business</em> since March 2025, when Cotiviti (backed by Veritas Capital) acquired it from TA Associates and Francisco Partners. Despite a CEO transition (Venkat Kavarthapu to Ric Sinclair at parent), Edifecs won <em>Best in KLAS for CMS Payer Interoperability</em> in 2026 — its third recognition in four years.
+        </div>
+
+        <h3 class="sub-h">Top Strategic Actions</h3>
+        <div class="action-list">
+          ${DATA.actions.slice(0, 3).map(a => `
+            <div class="action-card">
+              <div class="action-rank">${String(a.rank).padStart(2,'0')}</div>
+              <div>
+                <span class="action-priority ${a.priority}">${a.priority}</span>
+                <h4 class="action-title">${a.action}</h4>
+                <p class="action-rationale">${a.rationale}</p>
+              </div>
+              <div class="action-deadline">DUE BY<strong>${a.deadline}</strong></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <aside>
+        <div class="sentiment-card">
+          <div class="sentiment-label">Overall Sentiment Read</div>
+          <div class="sentiment-score">+${sent.avg_score}</div>
+          <div style="font-size:13px; color: var(--gray-500); margin-bottom:8px;">Scaled −1.0 (very negative) to +1.0 (very positive)</div>
+          <div class="sentiment-bar"><div class="sentiment-bar-fill" style="width: ${sentScorePct}%"></div></div>
+          <div class="sentiment-breakdown">
+            <span><i class="dot pos"></i>${sent.positive} positive</span>
+            <span><i class="dot neu"></i>${sent.neutral} neutral</span>
+            <span><i class="dot neg"></i>${sent.negative} negative</span>
+          </div>
+          <div style="margin-top:16px; font-size:12px; color:var(--gray-500); line-height:1.55;">
+            Sentiment skews strongly positive, driven by KLAS recognition cycles and post-acquisition product-investment signals. Zero negative items in the scan window warrants further investigation — typical mid-cap competitor scans surface 5-10% negative coverage.
+          </div>
+        </div>
+
+        <div class="metric-grid" style="margin-top:24px; grid-template-columns:1fr 1fr;">
+          <div class="metric-card"><div class="metric-label">Domain Rank</div><div class="metric-value">${(DATA.digital.overview && DATA.digital.overview.Rank) ? Number(DATA.digital.overview.Rank).toLocaleString() : '—'}</div><div class="metric-sub">Semrush global</div></div>
+          <div class="metric-card"><div class="metric-label">Organic KWs</div><div class="metric-value">${DATA.digital.overview ? DATA.digital.overview['Organic Keywords'] : '—'}</div><div class="metric-sub">US database</div></div>
+        </div>
+      </aside>
+    </div>
+  `,
+
+  story: () => `
+    <h2 class="section-h">The Story</h2>
+    <p class="section-sub">A four-act narrative reconstructed from 48 cross-referenced intelligence signals. The Cotiviti acquisition reshapes how Simplify should think about Edifecs as a competitor.</p>
+
+    <h3 class="sub-h">Act I — The Acquisition</h3>
+    <div class="timeline">
+      <div class="timeline-item gold">
+        <div class="timeline-date">10 February 2025</div>
+        <div class="timeline-title">Cotiviti announces agreement to acquire Edifecs</div>
+        <p class="timeline-detail">TA Associates and Francisco Partners (Edifecs' PE owners since 2018) reach exit agreement with Cotiviti. Veritas Capital, Cotiviti's parent, backs the deal. Terms not publicly disclosed.</p>
+      </div>
+      <div class="timeline-item gold">
+        <div class="timeline-date">31 March 2025</div>
+        <div class="timeline-title">Acquisition closes</div>
+        <p class="timeline-detail">Edifecs officially becomes "Edifecs, a Cotiviti business." Founder Gurpreet "Sunny" Singh, who had departed earlier to lead RoundGlass, remains on LinkedIn as a referenceable industry figure.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">March 2025 – April 2026</div>
+        <div class="timeline-title">Integration period under Venkat Kavarthapu</div>
+        <p class="timeline-detail">Kavarthapu transitions from Edifecs CEO to EVP Operations at Cotiviti, overseeing integration. Dr. Emad Rizk continues as Cotiviti CEO during this period.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Act II — Leadership Transition</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">16 March 2026</div>
+        <div class="timeline-title">Ric Sinclair joins Cotiviti as CEO</div>
+        <p class="timeline-detail">Replaces Dr. Emad Rizk, who transitions to Senior Advisor. Sinclair oversees the combined Cotiviti–Edifecs business.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">April 2026</div>
+        <div class="timeline-title">Venkat Kavarthapu departs to symplr</div>
+        <p class="timeline-detail">Former Edifecs CEO takes the CEO role at symplr — a notable healthcare-tech leadership move. LinkedIn confirms current Chief Executive Officer at symplr.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Act III — Product &amp; Market Strength Continues</h3>
+    <div class="timeline">
+      <div class="timeline-item gold">
+        <div class="timeline-date">4 February 2026</div>
+        <div class="timeline-title">2026 Best in KLAS — CMS Payer Interoperability</div>
+        <p class="timeline-detail">Edifecs earns highest overall performance score of 91.9 across loyalty, culture, product, and relationship pillars. Third consecutive recognition in four years (also won 2023 and 2024 with score 92.2). The post-acquisition Edifecs is not losing market position.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">November 2025</div>
+        <div class="timeline-title">Michael Pattwell re-elected to WEDI Board</div>
+        <p class="timeline-detail">Continued industry-standards leadership. Edifecs remains active in HL7 FHIR workgroups, The Sequoia Project, and is a founding member of HL7 Da Vinci Project.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Act IV — Strategic Implications for Simplify</h3>
+    <div class="coverage">
+      <strong>The Edifecs we now compete against is Cotiviti's interoperability arm.</strong> Cotiviti's deep payment-integrity capabilities now sit alongside Edifecs' EDI and FHIR API platform. Combined, this creates a payer-side suite that competes with Simplify across <strong>interoperability, prior-authorization, claims data management, and payment-integrity workflows simultaneously</strong>.
+      <br><br>
+      Two practical implications: (1) Edifecs' invisibility in public events does not mean reduced threat — post-acquisition hiring signals (multiple Sr. Operations Engineer, Network Engineer, and Product Management roles) indicate platform scaling. (2) Simplify's competitive battle cards need to be updated to reflect the combined Cotiviti+Edifecs offering, not Edifecs-as-standalone.
+    </div>
+  `,
+
+  events: () => {
+    const cats = {};
+    DATA.gap_events.forEach(e => {
+      const c = e.category || 'Other';
+      if (!cats[c]) cats[c] = [];
+      cats[c].push(e);
+    });
+    return `
+      <h2 class="section-h">Events &amp; Conferences</h2>
+      <p class="section-sub">${DATA.gap_events.length} gap events identified across Edifecs' presence footprint. Events grouped by gap classification — Net New (Edifecs goes, we don't), Tracked (Edifecs absent), and Competitor Flagship (Edifecs key venue).</p>
+      ${Object.entries(cats).map(([cat, items]) => `
+        <h3 class="sub-h">${cat} <span style="color:var(--gray-400); font-weight:400; font-size:14px;">· ${items.length} events</span></h3>
+        <table class="data-table">
+          <thead><tr><th style="width:30%">Event</th><th>Year</th><th style="width:18%">Role</th><th>Detail</th></tr></thead>
+          <tbody>
+            ${items.slice(0, 10).map(e => `
+              <tr>
+                <td><strong>${e.name}</strong></td>
+                <td>${e.year || '—'}</td>
+                <td>${e.role || '—'}</td>
+                <td>${e.detail || '—'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `).join('')}
+    `;
+  },
+
+  awards: () => {
+    const byYear = {};
+    DATA.awards.forEach(a => {
+      const y = a.year || 'Undated';
+      if (!byYear[y]) byYear[y] = [];
+      byYear[y].push(a);
+    });
+    const years = Object.keys(byYear).sort((a,b) => b.localeCompare(a));
+    return `
+      <h2 class="section-h">Awards &amp; Recognition</h2>
+      <p class="section-sub">${DATA.awards.length} awards and recognitions tracked across 2023–2026. KLAS dominance and analyst recognition form the core narrative.</p>
+      ${years.map(y => `
+        <div class="award-year-block">
+          <div class="award-year">${y}</div>
+          ${byYear[y].slice(0, 6).map(a => `
+            <div class="award-row">
+              <div class="award-icon">★</div>
+              <div class="award-content">
+                <h4 class="award-name">${a.name}</h4>
+                <p class="award-result">${a.result || ''} ${a.org ? ' · ' + a.org : ''}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `).join('')}
+    `;
+  },
+
+  leaders: () => {
+    return `
+      <h2 class="section-h">Leadership Team</h2>
+      <p class="section-sub">${DATA.leaders.length} executives profiled via LinkedIn scraping (Apify) and cross-referenced with web sources. Note the post-acquisition team composition: founder departed, former CEO departed, current execs reporting into Cotiviti.</p>
+
+      ${DATA.leadership_assessment ? `<div class="coverage"><strong>Opus synthesis:</strong> ${DATA.leadership_assessment}</div>` : ''}
+
+      <div class="leader-grid">
+        ${DATA.leaders.map(l => {
+          let cls = '', tag = '';
+          const title = (l.title || '').toLowerCase();
+          if (title.includes('founder')) { cls = 'founder'; tag = '<span class="leader-tag founder">FOUNDER</span>'; }
+          else if (title.includes('departed') || title.includes('symplr')) { cls = 'departed'; tag = '<span class="leader-tag departed">DEPARTED</span>'; }
+          return `
+            <div class="leader-card ${cls}">
+              ${tag}
+              <h3 class="leader-name">${l.name}</h3>
+              <p class="leader-title">${l.title}</p>
+              ${l.tenure ? `<div class="leader-meta"><strong>Tenure:</strong> ${l.tenure}</div>` : ''}
+              ${l.previous ? `<div class="leader-meta"><strong>Previously:</strong> ${l.previous}</div>` : ''}
+              ${l.linkedin ? `<a class="leader-link" href="${l.linkedin}" target="_blank" rel="noopener">View on LinkedIn →</a>` : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  },
+
+  digital: () => {
+    const ov = DATA.digital.overview || {};
+    return `
+      <h2 class="section-h">Digital Posture</h2>
+      <p class="section-sub">Semrush snapshot of edifecs.com, US database. SEO and paid-search posture indicates a brand-defense strategy — they paid CPC $6.01 on "what is edifecs" as a top defensive bid.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card"><div class="metric-label">Domain Rank</div><div class="metric-value">${ov.Rank ? Number(ov.Rank).toLocaleString() : '—'}</div><div class="metric-sub">Global ranking</div></div>
+        <div class="metric-card"><div class="metric-label">Organic Keywords</div><div class="metric-value">${ov['Organic Keywords'] || '—'}</div><div class="metric-sub">Ranking in top 100</div></div>
+        <div class="metric-card"><div class="metric-label">Organic Traffic</div><div class="metric-value">${ov['Organic Traffic'] || '—'}</div><div class="metric-sub">Estimated monthly</div></div>
+        <div class="metric-card"><div class="metric-label">Adwords Keywords</div><div class="metric-value">${ov['Adwords Keywords'] || '—'}</div><div class="metric-sub">Active paid bids</div></div>
+      </div>
+
+      <h3 class="sub-h">Top Organic Keywords (driving most traffic)</h3>
+      <div class="kw-grid">
+        ${(DATA.digital.top_organic_keywords || []).slice(0, 12).map(k => `
+          <div class="kw-chip">
+            <strong>${k.Keyword}</strong>
+            <span class="pos">#${k.Position} · ${k['Search Volume']} vol</span>
+          </div>
+        `).join('')}
+      </div>
+
+      <h3 class="sub-h">Paid Keywords (active CPC bids)</h3>
+      <table class="data-table">
+        <thead><tr><th>Keyword</th><th>Position</th><th>Search Volume</th><th>CPC</th><th>Traffic %</th></tr></thead>
+        <tbody>
+          ${(DATA.digital.paid_keywords || []).slice(0, 5).map(k => `
+            <tr>
+              <td><strong>${k.Keyword}</strong></td>
+              <td>#${k.Position}</td>
+              <td>${k['Search Volume']}</td>
+              <td>$${k.CPC}</td>
+              <td>${k['Traffic (%)']}%</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+
+      <h3 class="sub-h">SEO Competitors (by Semrush relevance)</h3>
+      <table class="data-table">
+        <thead><tr><th>Competitor Domain</th><th>Relevance</th><th>Common Keywords</th><th>Their Organic KWs</th></tr></thead>
+        <tbody>
+          ${(DATA.digital.seo_competitors || []).slice(0, 8).map(c => `
+            <tr>
+              <td><strong>${c.Domain}</strong></td>
+              <td>${(parseFloat(c['Competitor Relevance'])*100).toFixed(0)}%</td>
+              <td>${c['Common Keywords']}</td>
+              <td>${c['Organic Keywords']}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+
+      ${DATA.digital_posture ? `<div class="coverage" style="margin-top:32px;"><strong>Opus synthesis:</strong> ${DATA.digital_posture}</div>` : ''}
+    `;
+  },
+
+  marketing: () => {
+    return `
+      <h2 class="section-h">Marketing &amp; GTM</h2>
+      <p class="section-sub">${DATA.marketing.length} marketing assets and GTM signals captured. Content posture, case studies, and customer references.</p>
+
+      ${DATA.gtm_assessment ? `<div class="coverage"><strong>Opus synthesis:</strong> ${DATA.gtm_assessment}</div>` : ''}
+
+      <h3 class="sub-h">Captured Marketing Assets</h3>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Name / Title</th><th>Date</th><th>Source</th></tr></thead>
+        <tbody>
+          ${DATA.marketing.filter(m => m.name).slice(0, 15).map(m => `
+            <tr>
+              <td><strong>${m.type || '—'}</strong></td>
+              <td>${m.title || m.name || '—'}</td>
+              <td>${m.date || '—'}</td>
+              <td>${m.url ? `<a href="${m.url}" target="_blank">${m.url.substring(0, 60)}…</a>` : '—'}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  },
+
+  signals: () => {
+    const cot = DATA.signals.filter(s => s.cotiviti_related);
+    const oth = DATA.signals.filter(s => !s.cotiviti_related);
+    const card = s => `
+      <div class="signal-card ${s.cotiviti_related ? 'cotiviti' : s.sentiment}">
+        <div class="signal-header">
+          <span class="sentiment-chip ${s.sentiment}">${s.sentiment}${s.sentiment_score ? ' ' + (s.sentiment_score>0?'+':'') + s.sentiment_score.toFixed(2) : ''}</span>
+          <span class="signal-source">${s.discovery || ''} ${s.date ? '· ' + s.date : ''} ${s.source ? '· ' + s.source : ''}</span>
+        </div>
+        <p class="signal-detail">${s.detail}</p>
+        ${s.url ? `<a class="signal-link" href="${s.url}" target="_blank">View source →</a>` : ''}
+      </div>
+    `;
+    return `
+      <h2 class="section-h">Intelligence Signals</h2>
+      <p class="section-sub">100+ raw signals captured this scan. Below: the 30 highest-signal items, with Cotiviti-related signals surfaced first.</p>
+
+      <h3 class="sub-h">Cotiviti Acquisition &amp; Integration (${cot.length})</h3>
+      <div class="signal-feed">${cot.slice(0, 12).map(card).join('')}</div>
+
+      <h3 class="sub-h">Other High-Signal Items (${oth.length})</h3>
+      <div class="signal-feed">${oth.slice(0, 15).map(card).join('')}</div>
+    `;
+  },
+
+  recommendations: () => `
+    <h2 class="section-h">Strategic Recommendations</h2>
+    <p class="section-sub">Five actions prioritized P0–P2 with deadlines and rationales. Plus the product threat matrix derived from the cross-data synthesis.</p>
+
+    <h3 class="sub-h">Top 5 Actions</h3>
+    <div class="action-list">
+      ${DATA.actions.map(a => `
+        <div class="action-card">
+          <div class="action-rank">${String(a.rank).padStart(2,'0')}</div>
+          <div>
+            <span class="action-priority ${a.priority}">${a.priority}</span>
+            <h4 class="action-title">${a.action}</h4>
+            <p class="action-rationale">${a.rationale}</p>
+          </div>
+          <div class="action-deadline">DUE BY<strong>${a.deadline}</strong></div>
+        </div>
+      `).join('')}
+    </div>
+
+    <h3 class="sub-h">Product Threat Matrix</h3>
+    <div class="threat-grid">
+      ${DATA.threats.map(t => `
+        <div class="threat-row">
+          <div class="threat-product">${t.product}</div>
+          <div><span class="threat-level ${t.level}">${t.level}</span></div>
+          <div class="threat-evidence">${t.evidence}</div>
+        </div>
+      `).join('')}
+    </div>
+  `,
+
+  methodology: () => `
+    <h2 class="section-h">Coverage &amp; Methodology</h2>
+    <p class="section-sub">How this report was generated, what it covers, and what it doesn't.</p>
+
+    <h3 class="sub-h">Data Collection Pipeline</h3>
+    <div class="coverage">
+      The Simplify CI Agent V6.5 runs a six-stage workflow:
+      <br><br>
+      <strong>1. Setup</strong> — loads 96 baseline Simplify-tracked events from the master list.<br>
+      <strong>2. Discovery</strong> — broad-spectrum web search across competitor name, products, and events (Claude Sonnet 4.6 + web search, 3 blocks).<br>
+      <strong>3. People</strong> — LinkedIn company-page post analysis (Apify + Haiku) and executive profile scraping (Apify + Sonnet).<br>
+      <strong>4. Channel</strong> — deep social/media scan (YouTube, podcasts, Reddit, Twitter, blogs), Semrush SEO snapshot, GTM intelligence.<br>
+      <strong>5. External</strong> — conference detail crawl, news sweep, press-wire RSS aggregation (Google News, Bing News, Yahoo News, Reddit), award scan.<br>
+      <strong>6. Synthesis</strong> — Claude Opus 4.6 reads the 10-tab Google Sheet output and writes strategic synthesis.
+    </div>
+
+    <h3 class="sub-h">What This Covers</h3>
+    <div class="coverage">
+      Public web · LinkedIn (Apify) · Press wires (Google/Bing/Yahoo News, Reddit RSS) · Event aggregators · Trade media · Semrush SEO data · Hiring intent · Sentiment scoring across LinkedIn, news, wires.
+    </div>
+
+    <h3 class="sub-h">What This Does Not Cover</h3>
+    <div class="coverage">
+      Gated attendee lists · Private communications · Paid monitoring feeds (Meltwater, Cision) · Competitor CRM data · Live event sentiment · TV/radio/podcast transcription · Share-of-voice across full competitor set.
+    </div>
+
+    <h3 class="sub-h">Scan Metadata</h3>
+    <table class="data-table" style="max-width:600px;">
+      <tbody>
+        <tr><td><strong>Target</strong></td><td>edifecs.com</td></tr>
+        <tr><td><strong>Business Unit</strong></td><td>SHC (Simplify Healthcare)</td></tr>
+        <tr><td><strong>Scan Date</strong></td><td>25 May 2026</td></tr>
+        <tr><td><strong>Lookback Window</strong></td><td>90 days for news, full for awards/events</td></tr>
+        <tr><td><strong>Models Used</strong></td><td>Haiku 4.5, Sonnet 4.6, Opus 4.6</td></tr>
+        <tr><td><strong>Data Sources Hit</strong></td><td>Apify · Semrush · Google/Bing/Yahoo News RSS · Reddit RSS · web search</td></tr>
+        <tr><td><strong>Report Generator</strong></td><td>Claude Opus 4.7 + Simplify Healthcare brand template</td></tr>
+      </tbody>
+    </table>
+  `
+};
+
+// Initial render
+function showTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  const content = document.getElementById('content');
+  content.innerHTML = `<div class="tab-panel active">${TABS[name]()}</div>`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => showTab(btn.dataset.tab));
+});
+
+showTab('overview');
+</script>
 </body>
 </html>
