@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI Reports · Simplify Healthcare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-blue: #105299;
+    --brand-blue-dark: #0C5395;
+    --brand-blue-mid: #4C9CD5;
+    --brand-gold: #D6B73E;
+    --gold-tint: #FFF4CF;
+    --near-black: #221F20;
+    --gray-100: #F4F4F5;
+    --gray-200: #E5E5E7;
+    --gray-400: #9A9A9A;
+    --gray-500: #6E6E73;
+    --gray-700: #3D3D45;
+    --serif: 'Roboto Slab', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--sans); color: var(--near-black); background: #FFF; }
+  .hero { background: linear-gradient(135deg, #0A3F75 0%, #105299 100%); color: #FFF; padding: 64px 48px; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; }
+  .brand-logo { font-family: var(--serif); font-weight: 700; font-size: 18px; margin-bottom: 56px; letter-spacing: 0.02em; }
+  .brand-logo span { color: var(--brand-gold); }
+  .hero-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.20em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 16px; }
+  .hero-title { font-family: var(--serif); font-weight: 700; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 24px 0; }
+  .hero-deck { font-size: 18px; font-weight: 300; max-width: 680px; line-height: 1.5; color: rgba(255,255,255,0.85); margin: 0; }
+  main { max-width: 1100px; margin: 0 auto; padding: 56px 48px 80px; }
+  .meta-row { display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--gray-200); margin-bottom: 32px; font-size: 13px; color: var(--gray-500); }
+  .meta-row strong { font-family: var(--serif); color: var(--brand-blue); font-size: 18px; font-weight: 600; display: block; }
+  h2.h { font-family: var(--serif); font-weight: 700; font-size: 32px; margin: 48px 0 8px 0; letter-spacing: -0.015em; }
+  .h-sub { font-size: 15px; color: var(--gray-500); margin: 0 0 32px 0; }
+  .report-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .report-card {
+    display: block;
+    background: #FFF;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+  }
+  .report-card:hover { box-shadow: 0 12px 32px rgba(34,31,32,0.10); transform: translateY(-2px); border-color: var(--brand-blue-mid); }
+  .report-date { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px; }
+  .report-name { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--brand-blue); margin: 0 0 4px 0; letter-spacing: -0.01em; }
+  .report-sub { font-size: 13px; color: var(--gray-500); margin: 0 0 16px 0; font-style: italic; }
+  .report-tease { font-size: 14px; color: var(--gray-700); line-height: 1.5; margin: 0 0 16px 0; }
+  .report-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--brand-blue); }
+  .report-tags { display: flex; gap: 6px; margin-top: 12px; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 3px; background: var(--gold-tint); color: #8C7220; }
+  .tag.shc { background: rgba(187,236,255,0.5); color: var(--brand-blue-dark); }
+  footer { background: var(--near-black); color: rgba(255,255,255,0.6); padding: 32px 48px; font-size: 12px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">Simplify <span>Healthcare</span></div>
+    <div class="hero-eyebrow">Competitive Intelligence Library</div>
+    <h1 class="hero-title">CI Reports</h1>
+    <p class="hero-deck">Auto-generated competitive intelligence reports produced by the Simplify CI Agent V6.5. Each report is built from 100+ intelligence signals across web, LinkedIn, press wires, trade media, and SEO data.</p>
+  </div>
+</header>
+
+<main>
+  <div class="meta-row">
+    <div><strong>1</strong>report this quarter</div>
+    <div><strong>V6.5</strong>agent version</div>
+    <div><strong>Opus 4.7</strong>narrative engine</div>
+    <div><strong>~$6</strong>per scan + report</div>
+  </div>
+
+  <h2 class="h">Latest Reports</h2>
+  <p class="h-sub">Reports are cached for 90 days. Re-requesting an already-scanned competitor returns the cached version instantly at zero cost.</p>
+
+  <div class="report-grid">
+    <a href="reports/edifecs.html" class="report-card">
+      <div class="report-date">25 MAY 2026</div>
+      <h3 class="report-name">Edifecs</h3>
+      <p class="report-sub">a Cotiviti business</p>
+      <p class="report-tease">Healthcare interoperability incumbent now operating under Cotiviti ownership. Third consecutive Best in KLAS for CMS Payer Interoperability (2023/2024/2026). Post-acquisition platform scaling underway.</p>
+      <div class="report-tags">
+        <span class="tag shc">SHC</span>
+        <span class="tag">CMS Payer Interop</span>
+        <span class="tag">EDI</span>
+      </div>
+      <br>
+      <span class="report-cta">View report →</span>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Simplify Healthcare · Competitive Intelligence Library</div>
+    <div>Generated by CI Agent V6.5 · Hosted on GitHub Pages</div>
+  </div>
+</footer>
+
+</body>
+</html>
